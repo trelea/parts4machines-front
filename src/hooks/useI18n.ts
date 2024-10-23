@@ -9,7 +9,8 @@ export const useI18n = () => {
         window.location.pathname.split('/')[1]
       )
     ) {
-      window.location.pathname = `/${i18n.language}${window.location.pathname}`;
+      // window.history.pushState('', '', `/${i18n.language}${window.location.pathname}`)
+      window.location.pathname = `/${i18n.language}${window.location.pathname}`
     }
   }, []);
   return { t, i18n }

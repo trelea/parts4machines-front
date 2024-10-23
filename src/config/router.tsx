@@ -2,6 +2,7 @@ import AutoPart from '@/pages/AutoParts/AutoPart';
 import AutoParts from '@/pages/AutoParts/AutoParts';
 import Cart from '@/pages/Cart/Cart';
 import Index from '@/pages/Index/Index';
+import NotFound from '@/pages/NotFound/NotFound';
 import Services from '@/pages/Services/Services';
 import Vehicle from '@/pages/Vehicles/Vehicle';
 import Vehicles from '@/pages/Vehicles/Vehicles';
@@ -28,4 +29,7 @@ export const router = createBrowserRouter([
 
   { path: '/autoparts/:id', element: <AutoPart /> },
   { path: '/:lng/autoparts/:id', element: <AutoPart /> },
+
+  // 404
+  { path: '*', element: <NotFound /> },
 ]);

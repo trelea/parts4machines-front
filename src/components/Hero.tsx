@@ -8,6 +8,7 @@ import _autoparts from '@/assets/_autoparts.png';
 import _services from '@/assets/_services.png';
 import _cars from '@/assets/_cars.png';
 import { useTranslation } from 'react-i18next';
+import Image from './Image';
 
 export default function Hero() {
   const { i18n } = useTranslation();
@@ -45,14 +46,14 @@ export default function Hero() {
         </p>
       </div>
       <div className='hidden sm:block'>
-        <img src={bmw} alt='' loading='lazy' />
+        <Image src={bmw} alt={bmw} loading='lazy' />
       </div>
       <div className='hidden sm:block'>
-        <img src={zavod} alt='' loading='lazy' />
+        <Image src={zavod} alt={bmw} loading='lazy' />
       </div>
       <div className='grid grid-cols-2 gap-3 sm:hidden'>
-        <img src={bmw} alt='' loading='lazy' />
-        <img src={zavod} alt='' loading='lazy' />
+        <Image src={bmw} alt={bmw} loading='lazy' />
+        <Image src={zavod} alt={bmw} loading='lazy' />
       </div>
     </section>
   );
