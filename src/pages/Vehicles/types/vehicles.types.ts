@@ -12,6 +12,7 @@ export interface Vehicle {
   seats: number;
   stock: boolean;
   tags: string;
+  odometer: number;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;

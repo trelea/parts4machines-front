@@ -19,10 +19,13 @@ import {
   SheetHeader,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import { useCartStore } from '@/store/store';
+import { CartState } from '@/store/types';
 
 export default function Navbar() {
   const { i18n } = useTranslation();
   const path = useGetWithoutLocale();
+  const { services, parts } = useCartStore((state: CartState) => state);
 
   return (
     <nav className='flex py-8 px-8 md:px-11 lg:px-40 2xl:px-56 w-full justify-between items-center'>
@@ -71,13 +74,14 @@ export default function Navbar() {
             </SelectTrigger>
             <SelectContent className=''>
               <SelectItem value='en'>En</SelectItem>
-              <SelectItem value='ro'>Ro</SelectItem>
               <SelectItem value='ru'>Ru</SelectItem>
+              <SelectItem value='ua'>Ua</SelectItem>
+              <SelectItem value='es'>Es</SelectItem>
             </SelectContent>
           </Select>
         </li>
         <li
-          className={`hover:animate-bounce ${
+          className={`hover:animate-bounce relative ${
             path === 'cart' && 'bg-foreground'
           } rounded-full flex justify-center items-center`}
         >
@@ -91,6 +95,13 @@ export default function Navbar() {
               } bg-transparent size-6`}
             />
           </Link>
+          {services.length + parts.length > 0 && (
+            <div className='absolute top-0 right-0 bg-primary aspect-square rounded-full  flex justify-center items-center px-2'>
+              <h1 className='text-xs text-black aspect-square font-medium'>
+                {services.length + parts.length}
+              </h1>
+            </div>
+          )}
         </li>
         <li className='lg:hidden'>
           <Sheet>
@@ -140,11 +151,10 @@ export default function Navbar() {
                       <SelectValue placeholder={i18n.language} />
                     </SelectTrigger>
                     <SelectContent className='bg-transparent text-background'>
-                      <SelectItem value='en' className='bg-transparent'>
-                        En
-                      </SelectItem>
-                      <SelectItem value='ro'>Ro</SelectItem>
+                      <SelectItem value='en'>En</SelectItem>
                       <SelectItem value='ru'>Ru</SelectItem>
+                      <SelectItem value='ua'>Ua</SelectItem>
+                      <SelectItem value='es'>Es</SelectItem>
                     </SelectContent>
                   </Select>
                 </li>

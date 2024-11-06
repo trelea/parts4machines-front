@@ -17,7 +17,7 @@ export const getVehicles = async ({
 }): Promise<AxiosResponse<getVehiclesType>> => {
   const query = stringify(
     {
-      fields: ['documentId', 'mark', 'model', 'year', 'price'],
+      fields: ['documentId', 'mark', 'model', 'year', 'price', 'stock'],
       populate: { images: true },
       filters: {
         $or: [
@@ -36,6 +36,10 @@ export const getVehicles = async ({
   return await axiosApi.get<getVehiclesType>(`/cars?${query}`);
 };
 
-export const getVehicle = async ({ documentId }: { documentId: string }) => {
+export const getVehicle = async ({
+  documentId,
+}: {
+  documentId: string;
+}): Promise<AxiosResponse<getVehicleType>> => {
   return await axiosApi.get<getVehicleType>(`/cars/${documentId}?populate=*`);
 };

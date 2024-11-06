@@ -32,7 +32,7 @@ export default function ProductImageSlider({ images }: Props) {
               images && images[thumb].formats.large.url
             }`}
             alt={images && images[thumb].formats.large.name}
-            className='rounded-3xl shadow-2xl h-[450px] xl:h-[500px] 2xl:h-[550px] w-full object-contain'
+            className='rounded-3xl shadow-2xl h-[450px] xl:h-[500px] 2xl:h-[550px] w-full object-contain border border-white border-opacity-10'
           />
         </div>
         <Carousel
@@ -49,8 +49,10 @@ export default function ProductImageSlider({ images }: Props) {
                   onClick={() => setThumb(_)}
                 >
                   <Image
-                    className={`h-32 xl:h-36 2xl:h-40 w-full object-cover object-center rounded-xl shadow-2xl ${
-                      thumb === _ && 'border-2 border-foreground'
+                    className={`h-32 xl:h-36 2xl:h-40 w-full object-contain object-center rounded-xl shadow-2xl  ${
+                      thumb === _
+                        ? 'border-2 border-foreground'
+                        : 'border border-white border-opacity-10'
                     }`}
                     src={`${import.meta.env.VITE_API_URL}${
                       i && i.formats.small.url
@@ -60,8 +62,8 @@ export default function ProductImageSlider({ images }: Props) {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className='absolute left-1' />
-          <CarouselNext className='absolute right-1' />
+          <CarouselPrevious className='absolute left-2' />
+          <CarouselNext className='absolute right-2' />
         </Carousel>
       </div>
       <div className='lg:hidden w-full'>
@@ -71,7 +73,7 @@ export default function ProductImageSlider({ images }: Props) {
               <CarouselItem key={_}>
                 <div className='flex justify-center items-center'>
                   <Image
-                    className='w-full object-contain object-center rounded-lg shadow-2xl h-64 sm:h-80 md:h-96'
+                    className='w-full object-contain object-center rounded-lg shadow-2xl h-64 sm:h-80 md:h-96 border border-white border-opacity-10'
                     src={`${import.meta.env.VITE_API_URL}${
                       i && i.formats.large.url
                     }`}
@@ -80,8 +82,8 @@ export default function ProductImageSlider({ images }: Props) {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className='absolute left-1 top-[50%]' />
-          <CarouselNext className='absolute right-1 top-[50%]' />
+          <CarouselPrevious className='absolute left-2 top-[50%]' />
+          <CarouselNext className='absolute right-2 top-[50%]' />
         </Carousel>
       </div>
     </>

@@ -8,8 +8,10 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from './ui/alert-dialog';
+import { useTranslation } from 'react-i18next';
 
 export default function ErrorFetchDialog() {
+  const { i18n } = useTranslation();
   return (
     <AlertDialog defaultOpen>
       <AlertDialogContent className='w-[90%] rounded-xl'>
@@ -25,7 +27,7 @@ export default function ErrorFetchDialog() {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel className='text-lg'>
-            <Link to={'/'}>Go Home</Link>
+            <Link to={`/${i18n.language}/`}>Go Home</Link>
           </AlertDialogCancel>
         </AlertDialogFooter>
       </AlertDialogContent>

@@ -11,6 +11,10 @@ import {
 import { ScrollArea } from './ui/scroll-area';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
+import { GiReceiveMoney } from 'react-icons/gi';
+import { LuMessageSquarePlus } from 'react-icons/lu';
+import { Dialog, DialogTrigger } from './ui/dialog';
+import OrderVehicle from './OrderVehicle';
 
 interface locales {
   en: string;
@@ -33,7 +37,7 @@ interface Props {
 }
 export default function VehicleDetails({ vehicle }: Props) {
   const { i18n } = useTranslation();
-  console.log(vehicle);
+
   return (
     <div className='flex-1 flex flex-col gap-10'>
       <h1 className='text-2xl lg:text-3xl 2xl:text-4xl font-semibold text-foreground'>
@@ -46,7 +50,7 @@ export default function VehicleDetails({ vehicle }: Props) {
             <TableHeader>
               <TableRow>
                 <TableHead className='text-baselg:text-lg 2xl:text-xl font-medium'>
-                  Vehicle Details
+                  Details
                 </TableHead>
               </TableRow>
             </TableHeader>
@@ -62,6 +66,10 @@ export default function VehicleDetails({ vehicle }: Props) {
               <TableRow>
                 <TableCell>Year</TableCell>
                 <TableCell>{vehicle?.year}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>Odometer</TableCell>
+                <TableCell>{vehicle?.odometer}km</TableCell>
               </TableRow>
               {vehicle?.vin && (
                 <TableRow>
@@ -135,9 +143,14 @@ export default function VehicleDetails({ vehicle }: Props) {
               )}
               <TableRow>
                 <TableCell>Tags</TableCell>
-                <TableCell className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 items-center justify-center'>
+                <TableCell className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 2xl:grid-cols-4 gap-3 items-center justify-center'>
                   {vehicle?.tags.split(' ').map((t, _: number) => (
-                    <Badge className='text-center w-full'>{t}</Badge>
+                    <Badge
+                      key={_}
+                      className='w-full flex justify-center items-center'
+                    >
+                      <h1>#{t}</h1>
+                    </Badge>
                   ))}
                 </TableCell>
               </TableRow>
@@ -145,13 +158,49 @@ export default function VehicleDetails({ vehicle }: Props) {
           </Table>
         </ScrollArea>
       </div>
-      <div className='flex justify-between gap-10 items-center mb-10 xl:mb-0'>
-        <Button className='h-fit text-xl lg:text-2xl 2xl:text-3xl w-full font-semibold'>
-          Buy
-        </Button>
-        <h1 className='text-xl lg:text-2xl 2xl:text-3xl font-semibold'>
-          ${vehicle?.price.toFixed(2)}
-        </h1>
+
+      <div className='flex flex-col gap-6 mb-10 xl:mb-0'>
+        <div className='flex justify-between gap-10 items-center'>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                variant={'default'}
+                className='h-fit text-lg lg:text-xl 2xl:text-2xl w-full font-semibold flex justify-center items-center p-3 m-0 gap-4'
+              >
+                <p>Order</p>
+                <LuMessageSquarePlus className='size-4 lg:size-6' />
+              </Button>
+            </DialogTrigger>
+            <OrderVehicle
+              title={`${
+                vehicle?.year
+              } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
+              price={Number(vehicle?.price)}
+            />
+          </Dialog>
+
+          <h1 className='text-xl lg:text-2xl 2xl:text-3xl font-semibold'>
+            ${vehicle?.price.toFixed(2)}
+          </h1>
+        </div>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button
+              variant={'outline'}
+              className='bg-opacity-50 h-fit text-lg lg:text-xl 2xl:text-2xl w-full font-semibold flex justify-center items-center p-3 m-0 gap-4'
+            >
+              <p>Click To Negotiate</p>
+              <GiReceiveMoney className='size-4 lg:size-6' />
+            </Button>
+          </DialogTrigger>
+          <OrderVehicle
+            title={`${
+              vehicle?.year
+            } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
+            price={Number(vehicle?.price)}
+            negotiate={true}
+          />
+        </Dialog>
       </div>
     </div>
   );

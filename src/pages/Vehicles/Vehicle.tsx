@@ -12,7 +12,6 @@ export default function Vehicle() {
   const { vehicle, error, isError } = useGetVehicle({
     documentId: id as string,
   });
-  console.log(vehicle?.data);
 
   if (error || isError) return <ErrorFetchDialog />;
 

@@ -2,7 +2,7 @@ import Loyout from '@/components/Loyout';
 import { useI18n } from '@/hooks/useI18n';
 import { useGetVehicles } from './hooks/useGetVehicles';
 import CardsContainer from '@/components/CardsContainer';
-import ProductCard from '@/components/ProductCard';
+import VehicleProductCard from '@/components/VehicleProductCard';
 import { Vehicle } from './types/vehicles.types';
 import Paginatinate from '@/components/Pagination';
 import SearchBar from '@/components/Search';
@@ -23,14 +23,18 @@ export default function Vehicles() {
 
         {/* Cards */}
         <CardsContainer>
-          {vehicles?.data.map((car: Vehicle) => (
-            <ProductCard
-              thumb={car?.images[0]?.formats.large.url}
-              title={`${car.year} ${car.mark} ${car.model}`}
-              price={car.price}
-              href={`/vehicles/${car.documentId}`}
-            />
-          ))}
+          {vehicles?.data.map(
+            (car: Vehicle) =>
+              car.stock && (
+                <VehicleProductCard
+                  key={car.documentId}
+                  thumb={car?.images[0]?.formats.large.url}
+                  title={`${car.year} ${car.mark} ${car.model}`}
+                  price={car.price}
+                  href={`/vehicles/${car.documentId}`}
+                />
+              )
+          )}
         </CardsContainer>
         {/* PAGINATION */}
         <Paginatinate page={page} setPage={setPage} pages={pages} />
