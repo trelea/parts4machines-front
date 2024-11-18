@@ -20,7 +20,7 @@ const Image = React.forwardRef(
         {_l ? (
           <img {...props} />
         ) : (
-          <Skeleton className='w-full aspect-square bg-secondary/50 rounded-xl'></Skeleton>
+          <Skeleton className='w-full bg-secondary/25 rounded-xl aspect-square'></Skeleton>
         )}
       </>
     );

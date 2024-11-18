@@ -4,7 +4,7 @@ import '@/config/i18n';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 const queryClient = new QueryClient({
-  defaultOptions: { queries: { retry: 0 } },
+  defaultOptions: { queries: { retry: 0, refetchOnWindowFocus: false } },
 });
 
 export default function App() {

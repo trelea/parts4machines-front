@@ -1,9 +1,17 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const useI18n = () => {
+export const useI18n = (
+  resetCart?: boolean,
+  resetCartCallback?: () => void
+) => {
   const { i18n, t } = useTranslation();
   React.useEffect(() => {
+    if (resetCart) {
+      resetCartCallback ? resetCartCallback() : null;
+      window.location.search = '';
+    }
+
     if (
       !/^(en|EN|eN|En|ru|RU|rU|Ru|ua|UA|uA|Ua|es|ES|eS|Es)/.test(
         window.location.pathname.split('/')[1]

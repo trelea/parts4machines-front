@@ -39,7 +39,7 @@ export default function Navbar() {
         </Link>
       </div>
 
-      <ul className='hidden lg:flex gap-10 text-xl font-medium'>
+      <ul className='hidden xl:flex gap-10 text-xl font-medium'>
         <li
           className={`hover:animate-bounce ${
             path === 'autoparts' && 'underline'
@@ -66,8 +66,8 @@ export default function Navbar() {
         </li>
       </ul>
 
-      <ul className='flex gap-6 2xl:gap-10 items-center justify-center'>
-        <li className='hidden lg:flex'>
+      <ul className='flex gap-6 2xl:gap-10 items-center justify-center relative'>
+        <li className='hidden xl:flex mr-28'>
           <Select onValueChange={(e) => setLang(e)}>
             <SelectTrigger className='w-fit border-none outline-none focus-visible:outline-none focus:outline-none ring-0 focus:ring-0 focus-visible:ring-0 rounded-none text-xl font-medium'>
               <SelectValue placeholder={i18n.language} />
@@ -81,7 +81,7 @@ export default function Navbar() {
           </Select>
         </li>
         <li
-          className={`hover:animate-bounce relative ${
+          className={`hover:animate-bounce fixed backdrop-blur-xl z-50 mr-32 xl:mr-0 ${
             path === 'cart' && 'bg-foreground'
           } rounded-full flex justify-center items-center`}
         >
@@ -103,7 +103,7 @@ export default function Navbar() {
             </div>
           )}
         </li>
-        <li className='lg:hidden'>
+        <li className='xl:hidden fixed z-50 mr-5 backdrop-blur-xl rounded-full aspect-square flex justify-center items-center p-3'>
           <Sheet>
             <SheetTrigger>
               <Menu className='bg-transparent size-6 text-foreground' />

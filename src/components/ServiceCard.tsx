@@ -6,6 +6,7 @@ import { useCheckProductsInCart } from '@/hooks/useCheckProductInCart';
 import { useCartStore } from '@/store/store';
 import { CartState } from '@/store/types';
 import { toast } from '@/hooks/use-toast';
+import { Link } from 'react-router-dom';
 
 interface Props {
   service: Service;
@@ -51,8 +52,29 @@ export default function ServiceCard({ service }: Props) {
             <Button
               className='text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl md:py-3 lg:py-4 xl:py-5 2xl:py-6 md:px-16 lg:px-24 xl:px-32 2xl:px-40 h-fit rounded-md 2xl:rounded-xl float-right ml-10'
               onClick={() => {
-                addService({ documentId: service.documentId });
-                toast({ description: 'Service added to cart.' });
+                addService({
+                  documentId: service.documentId,
+                  price: service.price,
+                  title: {
+                    title_en: service.title_en,
+                    title_es: service.title_es,
+                    title_ru: service.title_ru,
+                    title_ua: service.title_ua,
+                  },
+                });
+                toast({
+                  description: (
+                    <p>
+                      Service added to cart.{' '}
+                      <Link
+                        to={`/${i18n.language}/cart`}
+                        className='text-primary underline'
+                      >
+                        Check Cart.
+                      </Link>
+                    </p>
+                  ),
+                });
               }}
             >
               Buy ${service.price.toFixed(2)}
@@ -87,8 +109,29 @@ export default function ServiceCard({ service }: Props) {
           <Button
             className='text-sm sm:text-base sm:py-3 px-8 sm:px-16 h-fit rounded-md 2xl:rounded-xl float-start mr-4'
             onClick={() => {
-              addService({ documentId: service.documentId });
-              toast({ description: 'Service added to cart.' });
+              addService({
+                documentId: service.documentId,
+                price: service.price,
+                title: {
+                  title_en: service.title_en,
+                  title_es: service.title_es,
+                  title_ru: service.title_ru,
+                  title_ua: service.title_ua,
+                },
+              });
+              toast({
+                description: (
+                  <p>
+                    Service added to cart.{' '}
+                    <Link
+                      to={`/${i18n.language}/cart`}
+                      className='text-primary underline'
+                    >
+                      Check Cart
+                    </Link>
+                  </p>
+                ),
+              });
             }}
           >
             Buy ${service.price.toFixed(2)}

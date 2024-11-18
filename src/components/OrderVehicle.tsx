@@ -1,4 +1,3 @@
-import { useForm } from 'react-hook-form';
 import { DialogContent, DialogHeader, DialogTitle } from './ui/dialog';
 import {
   Form,
@@ -13,15 +12,26 @@ import { PhoneInput } from './ui/phone-input';
 import { Button } from './ui/button';
 import { SendHorizonal } from 'lucide-react';
 import React from 'react';
+import { useCreateVehicleOrder } from '@/pages/Vehicles/hooks/useCreateVehicleOrder';
 
 interface Props {
+  id: string;
   title: string;
   price: number;
   negotiate?: boolean;
+  setOpen: (_: boolean) => void;
+  open: boolean;
 }
 
-export default function OrderVehicle({ title, price, negotiate }: Props) {
-  const form = useForm();
+export default function OrderVehicle({
+  id,
+  title,
+  price,
+  negotiate,
+  open,
+  setOpen,
+}: Props) {
+  const { onSubmit, form } = useCreateVehicleOrder(id, open, setOpen);
   const [negotiation, setNegotiation] = React.useState<number | null>(null);
   return (
     <DialogContent className='max-w-[90%] xl:w-[50%] 2xl:w-[33%] rounded-lg lg:rounded-xl'>
@@ -33,7 +43,7 @@ export default function OrderVehicle({ title, price, negotiate }: Props) {
       <Form {...form}>
         <form
           action=''
-          onSubmit={form.handleSubmit(() => {})}
+          onSubmit={form.handleSubmit(onSubmit)}
           className='flex flex-col gap-6'
         >
           <FormField
@@ -50,6 +60,7 @@ export default function OrderVehicle({ title, price, negotiate }: Props) {
                     type='text'
                     className='outline-none text-sm xl:text-base 2xl:text-lg h-fit placeholder:opacity-75'
                     placeholder='Your name and surname...'
+                    required
                   />
                 </FormControl>
                 <FormMessage />
@@ -71,6 +82,7 @@ export default function OrderVehicle({ title, price, negotiate }: Props) {
                     type='email'
                     className='outline-none text-sm xl:text-base 2xl:text-lg h-fit placeholder:opacity-75'
                     placeholder='Your email...'
+                    required
                   />
                 </FormControl>
                 <FormMessage />
@@ -91,6 +103,7 @@ export default function OrderVehicle({ title, price, negotiate }: Props) {
                     {...field}
                     placeholder='Your phone number...'
                     className=''
+                    required
                   />
                 </FormControl>
                 <FormMessage />

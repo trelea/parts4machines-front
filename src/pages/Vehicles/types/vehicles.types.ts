@@ -62,3 +62,21 @@ export interface getVehicle extends Vehicle {
     };
   };
 }
+
+export interface PostVehicleOrder {
+  data: {
+    client: string;
+    email: string;
+    contact: string;
+    car: string;
+    negotiate?: number | undefined | null;
+  };
+}
+
+export interface PostVehicleOrderRes {
+  id: number;
+  documentId: string;
+  client: string;
+  negotiate: number | null;
+  contact: string;
+}

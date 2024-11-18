@@ -15,6 +15,7 @@ import { GiReceiveMoney } from 'react-icons/gi';
 import { LuMessageSquarePlus } from 'react-icons/lu';
 import { Dialog, DialogTrigger } from './ui/dialog';
 import OrderVehicle from './OrderVehicle';
+import React from 'react';
 
 interface locales {
   en: string;
@@ -36,6 +37,7 @@ interface Props {
     | undefined;
 }
 export default function VehicleDetails({ vehicle }: Props) {
+  const [open, setOpen] = React.useState<boolean>(false);
   const { i18n } = useTranslation();
 
   return (
@@ -49,12 +51,12 @@ export default function VehicleDetails({ vehicle }: Props) {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className='text-baselg:text-lg 2xl:text-xl font-medium'>
+                <TableHead className='text-base lg:text-lg 2xl:text-xl font-medium'>
                   Details
                 </TableHead>
               </TableRow>
             </TableHeader>
-            <TableBody className='text-sm lg:text-base font-medium'>
+            <TableBody className='text-xs md:text-sm xl:text-base font-medium'>
               <TableRow>
                 <TableCell>Mark</TableCell>
                 <TableCell>{vehicle?.mark}</TableCell>
@@ -161,7 +163,7 @@ export default function VehicleDetails({ vehicle }: Props) {
 
       <div className='flex flex-col gap-6 mb-10 xl:mb-0'>
         <div className='flex justify-between gap-10 items-center'>
-          <Dialog>
+          <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
               <Button
                 variant={'default'}
@@ -172,6 +174,9 @@ export default function VehicleDetails({ vehicle }: Props) {
               </Button>
             </DialogTrigger>
             <OrderVehicle
+              open={open}
+              setOpen={setOpen}
+              id={vehicle?.documentId as string}
               title={`${
                 vehicle?.year
               } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
@@ -183,7 +188,7 @@ export default function VehicleDetails({ vehicle }: Props) {
             ${vehicle?.price.toFixed(2)}
           </h1>
         </div>
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <Button
               variant={'outline'}
@@ -194,6 +199,9 @@ export default function VehicleDetails({ vehicle }: Props) {
             </Button>
           </DialogTrigger>
           <OrderVehicle
+            open={open}
+            setOpen={setOpen}
+            id={vehicle?.documentId as string}
             title={`${
               vehicle?.year
             } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}

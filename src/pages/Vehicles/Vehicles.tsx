@@ -28,6 +28,7 @@ export default function Vehicles() {
               car.stock && (
                 <VehicleProductCard
                   key={car.documentId}
+                  id={car.documentId}
                   thumb={car?.images[0]?.formats.large.url}
                   title={`${car.year} ${car.mark} ${car.model}`}
                   price={car.price}

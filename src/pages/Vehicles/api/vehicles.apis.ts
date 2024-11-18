@@ -1,6 +1,8 @@
 import { axiosApi } from '@/config/axios';
 import { AxiosResponse } from 'axios';
 import {
+  PostVehicleOrder,
+  PostVehicleOrderRes,
   getVehicle as getVehicleType,
   getVehicles as getVehiclesType,
 } from '../types/vehicles.types';
@@ -42,4 +44,10 @@ export const getVehicle = async ({
   documentId: string;
 }): Promise<AxiosResponse<getVehicleType>> => {
   return await axiosApi.get<getVehicleType>(`/cars/${documentId}?populate=*`);
+};
+
+export const postVehicleOrder = async (
+  data: PostVehicleOrder
+): Promise<AxiosResponse<PostVehicleOrderRes>> => {
+  return await axiosApi.post<PostVehicleOrderRes>('/avehilcles-orders1', data);
 };

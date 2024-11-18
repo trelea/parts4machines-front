@@ -6,8 +6,10 @@ import { LuMessageSquarePlus } from 'react-icons/lu';
 import { Dialog } from './ui/dialog';
 import { DialogTrigger } from '@radix-ui/react-dialog';
 import OrderVehicle from './OrderVehicle';
+import React from 'react';
 
 interface Props {
+  id: string;
   title: string;
   price: number;
   thumb: string;
@@ -15,11 +17,13 @@ interface Props {
 }
 
 export default function VehicleProductCard({
+  id,
   title,
   price,
   thumb,
   href,
 }: Props) {
+  const [open, setOpen] = React.useState<boolean>(false);
   const { i18n } = useTranslation();
 
   return (
@@ -48,14 +52,20 @@ export default function VehicleProductCard({
               <h1>${price.toFixed(2)}</h1>
             </div>
 
-            <Dialog>
+            <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
                 <Button className='font-semibold text-sm lg:text-base 2xl:text-lg text-foreground hover:text-primary h-fit bg-background m-0 p-0 hover:bg-black shadow-2xl flex gap-4 px-10 py-2 w-full'>
                   <p>Order</p>
                   <LuMessageSquarePlus className='size-6' />
                 </Button>
               </DialogTrigger>
-              <OrderVehicle title={title.toUpperCase()} price={price} />
+              <OrderVehicle
+                title={title.toUpperCase()}
+                price={price}
+                id={id}
+                open={open}
+                setOpen={setOpen}
+              />
             </Dialog>
           </div>
         </div>
