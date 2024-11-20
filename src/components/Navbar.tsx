@@ -61,9 +61,9 @@ export default function Navbar() {
         >
           <Link to={`/${i18n.language}/vehicles`}>Vehicles</Link>
         </li>
-        <li className={`hover:animate-bounce ${path === '' && 'underline'}`}>
+        {/* <li className={`hover:animate-bounce ${path === '' && 'underline'}`}>
           <Link to={`/${i18n.language}/`}>FAQ</Link>
-        </li>
+        </li> */}
       </ul>
 
       <ul className='flex gap-6 2xl:gap-10 items-center justify-center relative'>
@@ -138,13 +138,13 @@ export default function Navbar() {
                 >
                   <Link to={`/${i18n.language}/vehicles`}>Vehicles</Link>
                 </li>
-                <li
+                {/* <li
                   className={`hover:animate-bounce ${
                     path === '' && 'underline'
                   }`}
                 >
                   <Link to={`/${i18n.language}/`}>FAQ</Link>
-                </li>
+                </li> */}
                 <li className=''>
                   <Select onValueChange={(e) => setLang(e)}>
                     <SelectTrigger className='bg-transparent w-fit border-none outline-none ring-transparent focus:border-none focus:outline-none focus:ring-0 text-xl font-medium'>

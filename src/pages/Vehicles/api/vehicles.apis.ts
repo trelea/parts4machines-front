@@ -49,5 +49,5 @@ export const getVehicle = async ({
 export const postVehicleOrder = async (
   data: PostVehicleOrder
 ): Promise<AxiosResponse<PostVehicleOrderRes>> => {
-  return await axiosApi.post<PostVehicleOrderRes>('/avehilcles-orders1', data);
+  return await axiosApi.post<PostVehicleOrderRes>('/vehilcles-orders', data);
 };

@@ -27,9 +27,9 @@ export default function Footer() {
         <li className='hover:underline'>
           <Link to={`/${i18n.language}/vehicles`}>Vehicles</Link>
         </li>
-        <li className='hover:underline'>
+        {/* <li className='hover:underline'>
           <Link to={`/${i18n.language}/`}>FAQ</Link>
-        </li>
+        </li> */}
       </ul>
 
       <ul className='flex flex-col text-lg font-normal text-background gap-3'>
