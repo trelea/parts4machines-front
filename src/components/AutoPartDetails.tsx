@@ -18,6 +18,7 @@ import { useCartStore } from '@/store/store';
 import { CartState } from '@/store/types';
 import { Badge } from './ui/badge';
 import { ScrollArea } from './ui/scroll-area';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   autoPart:
@@ -31,6 +32,7 @@ interface Props {
 }
 
 export default function AutoPartDetails({ autoPart }: Props) {
+  const { t } = useTranslation();
   const { removePart, addPart } = useCartStore((state: CartState) => state);
   const { isPartInCart } = useCheckProductsInCart();
   return (
@@ -45,21 +47,21 @@ export default function AutoPartDetails({ autoPart }: Props) {
             <TableHeader>
               <TableRow>
                 <TableHead className='text-base lg:text-lg 2xl:text-xl font-medium'>
-                  Details
+                  {t('partTable.details')}
                 </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody className='text-xs md:text-sm xl:text-base font-medium'>
               <TableRow>
-                <TableCell>Name</TableCell>
+                <TableCell>{t('partTable.name')}</TableCell>
                 <TableCell>{autoPart?.name}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>OEM</TableCell>
+                <TableCell>{t('partTable.oem')}</TableCell>
                 <TableCell>{autoPart?.oem}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Cars</TableCell>
+                <TableCell>{t('partTable.cars')}</TableCell>
                 <TableCell className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 2xl:grid-cols-4 gap-3 items-center justify-center'>
                   {autoPart?.cars.split(';').map((t, _: number) => (
                     <Badge
@@ -72,7 +74,7 @@ export default function AutoPartDetails({ autoPart }: Props) {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>In Stock</TableCell>
+                <TableCell>{t('partTable.stock')}</TableCell>
                 <TableCell>
                   <b className='bg-primary px-2 py-1 text-black rounded-full'>
                     {autoPart?.stock} pcs
@@ -80,7 +82,7 @@ export default function AutoPartDetails({ autoPart }: Props) {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Status</TableCell>
+                <TableCell>{t('partTable.status')}</TableCell>
                 <TableCell>
                   <b className='bg-primary px-1 text-black rounded-full'>
                     {autoPart?.part_status}
@@ -89,11 +91,11 @@ export default function AutoPartDetails({ autoPart }: Props) {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Description</TableCell>
+                <TableCell>{t('partTable.desc')}</TableCell>
                 <TableCell>{autoPart?.description}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Tags</TableCell>
+                <TableCell>{t('partTable.tags')}</TableCell>
                 <TableCell className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 2xl:grid-cols-4 gap-3 items-center justify-center'>
                   {autoPart?.tags.split(' ').map((t, _: number) => (
                     <Badge
@@ -117,10 +119,10 @@ export default function AutoPartDetails({ autoPart }: Props) {
             className='h-fit text-lg lg:text-xl 2xl:text-2xl w-full font-semibold flex justify-center items-center p-3 m-0 gap-4'
             onClick={() => {
               removePart({ documentId: autoPart?.documentId as string });
-              toast({ description: 'Auto Part removed from cart.' });
+              toast({ description: t('cart.partRemove') });
             }}
           >
-            <p>Remove</p>
+            <p>{t('cart.remove')}</p>
             <MdOutlineRemoveShoppingCart className='size-4 lg:size-6' />
           </Button>
         ) : (
@@ -133,10 +135,10 @@ export default function AutoPartDetails({ autoPart }: Props) {
                 price: autoPart?.price as number,
                 name: autoPart?.name as string,
               });
-              toast({ description: 'Auto Part added to cart.' });
+              toast({ description: t('cart.partAdd') });
             }}
           >
-            <p>Buy</p>
+            <p>{t('cart.buy')}</p>
             <MdOutlineShoppingCart className='size-4 lg:size-6' />
           </Button>
         )}

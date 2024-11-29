@@ -7,6 +7,7 @@ import { PostVehicleOrder } from '../types/vehicles.types';
 import { postVehicleOrder } from '../api/vehicles.apis';
 import { AxiosError } from 'axios';
 import { toast } from '@/hooks/use-toast';
+import { Flashlight } from 'lucide-react';
 
 const formSchema = z.object({
   client: z.string(),
@@ -14,7 +15,10 @@ const formSchema = z.object({
   contact: z
     .string()
     .refine(isValidPhoneNumber, { message: 'Invalid phone number' }),
-  negotiate: z.coerce.number().optional(),
+  negotiate: z.coerce
+    .number()
+    .optional()
+    .transform((x) => (x ? x : '')),
 });
 
 export const useCreateVehicleOrder = (
@@ -28,7 +32,7 @@ export const useCreateVehicleOrder = (
       client: '',
       email: '',
       contact: '',
-      negotiate: undefined,
+      negotiate: '',
     },
   });
 
@@ -46,8 +50,16 @@ export const useCreateVehicleOrder = (
   });
 
   const onSubmit = (val: z.infer<typeof formSchema>) => {
-    if (!val.negotiate) delete val.negotiate;
-    mutation.mutate({ data: { ...val, car: id } });
+    const { negotiate, ...rest } = val;
+
+    mutation.mutate({
+      data: {
+        ...rest,
+        negotiate: negotiate === '' ? null : negotiate,
+        car: id,
+      },
+    });
+
     form.reset();
   };
 

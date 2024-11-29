@@ -13,9 +13,13 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { GiReceiveMoney } from 'react-icons/gi';
 import { LuMessageSquarePlus } from 'react-icons/lu';
-import { Dialog, DialogTrigger } from './ui/dialog';
+import { VscCallIncoming } from 'react-icons/vsc';
+import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
+import { IoCarOutline } from 'react-icons/io5';
 import OrderVehicle from './OrderVehicle';
 import React from 'react';
+import TestDriveForm from './TestDriveForm';
+import GetACallForm from './GetACallForm';
 
 interface locales {
   en: string;
@@ -38,7 +42,10 @@ interface Props {
 }
 export default function VehicleDetails({ vehicle }: Props) {
   const [open, setOpen] = React.useState<boolean>(false);
-  const { i18n } = useTranslation();
+  const [openNegotiate, setOpenNegotiate] = React.useState<boolean>(false);
+  const [openTestDrive, setOpenTestDrive] = React.useState<boolean>(false);
+
+  const { i18n, t } = useTranslation();
 
   return (
     <div className='flex-1 flex flex-col gap-10'>
@@ -52,40 +59,40 @@ export default function VehicleDetails({ vehicle }: Props) {
             <TableHeader>
               <TableRow>
                 <TableHead className='text-base lg:text-lg 2xl:text-xl font-medium'>
-                  Details
+                  {t('vehicle.details')}
                 </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody className='text-xs md:text-sm xl:text-base font-medium'>
               <TableRow>
-                <TableCell>Mark</TableCell>
+                <TableCell>{t('vehicle.mark')}</TableCell>
                 <TableCell>{vehicle?.mark}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Model</TableCell>
+                <TableCell>{t('vehicle.model')}</TableCell>
                 <TableCell>{vehicle?.model}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Year</TableCell>
+                <TableCell>{t('vehicle.year')}</TableCell>
                 <TableCell>{vehicle?.year}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Odometer</TableCell>
+                <TableCell>{t('vehicle.odometer')}</TableCell>
                 <TableCell>{vehicle?.odometer}km</TableCell>
               </TableRow>
               {vehicle?.vin && (
                 <TableRow>
-                  <TableCell>VIN</TableCell>
+                  <TableCell>{t('vehicle.vin')}</TableCell>
                   <TableCell>{vehicle?.vin}</TableCell>
                 </TableRow>
               )}
 
               <TableRow>
-                <TableCell>Engine Capacity</TableCell>
+                <TableCell>{t('vehicle.engine')}</TableCell>
                 <TableCell>{vehicle?.engine_capacity}cc</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Transmission</TableCell>
+                <TableCell>{t('vehicle.transmission')}</TableCell>
                 <TableCell>
                   {
                     vehicle?.transmission[
@@ -96,33 +103,33 @@ export default function VehicleDetails({ vehicle }: Props) {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Horse Power</TableCell>
+                <TableCell>{t('vehicle.power')}</TableCell>
                 <TableCell>{vehicle?.horse_power}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Seats</TableCell>
+                <TableCell>{t('vehicle.seats')}</TableCell>
                 <TableCell>{vehicle?.seats}</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Body</TableCell>
+                <TableCell>{t('vehicle.body')}</TableCell>
                 <TableCell>
                   {vehicle?.body[i18n.language as 'en' | 'ru' | 'ua' | 'es']}
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Color</TableCell>
+                <TableCell>{t('vehicle.color')}</TableCell>
                 <TableCell>
                   {vehicle?.color[i18n.language as 'en' | 'ru' | 'ua' | 'es']}
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Fuel</TableCell>
+                <TableCell>{t('vehicle.fuel')}</TableCell>
                 <TableCell>
                   {vehicle?.fuel[i18n.language as 'en' | 'ru' | 'ua' | 'es']}
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Traction</TableCell>
+                <TableCell>{t('vehicle.traction')}</TableCell>
                 <TableCell>
                   {
                     vehicle?.traction[
@@ -132,19 +139,19 @@ export default function VehicleDetails({ vehicle }: Props) {
                 </TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>Wheel</TableCell>
+                <TableCell>{t('vehicle.wheel')}</TableCell>
                 <TableCell>
                   {vehicle?.wheel[i18n.language as 'en' | 'ru' | 'ua' | 'es']}
                 </TableCell>
               </TableRow>
               {vehicle?.description && (
                 <TableRow>
-                  <TableCell>Description</TableCell>
+                  <TableCell>{t('vehicle.desc')}</TableCell>
                   <TableCell>{vehicle?.description}</TableCell>
                 </TableRow>
               )}
               <TableRow>
-                <TableCell>Tags</TableCell>
+                <TableCell>{t('vehicle.tags')}</TableCell>
                 <TableCell className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 2xl:grid-cols-4 gap-3 items-center justify-center'>
                   {vehicle?.tags.split(' ').map((t, _: number) => (
                     <Badge
@@ -161,15 +168,15 @@ export default function VehicleDetails({ vehicle }: Props) {
         </ScrollArea>
       </div>
 
-      <div className='flex flex-col gap-6 mb-10 xl:mb-0'>
+      <div className='flex flex-col gap-4 mb-10 xl:mb-0'>
         <div className='flex justify-between gap-10 items-center'>
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
               <Button
                 variant={'default'}
-                className='h-fit text-lg lg:text-xl 2xl:text-2xl w-full font-semibold flex justify-center items-center p-3 m-0 gap-4'
+                className='h-fit text-base lg:text-lg 2xl:text-xl w-full font-medium flex justify-center items-center p-3 m-0 gap-4'
               >
-                <p>Order</p>
+                <p>{t('vehicle.order')}</p>
                 <LuMessageSquarePlus className='size-4 lg:size-6' />
               </Button>
             </DialogTrigger>
@@ -181,6 +188,7 @@ export default function VehicleDetails({ vehicle }: Props) {
                 vehicle?.year
               } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
               price={Number(vehicle?.price)}
+              negotiate={false}
             />
           </Dialog>
 
@@ -188,27 +196,62 @@ export default function VehicleDetails({ vehicle }: Props) {
             ${vehicle?.price.toFixed(2)}
           </h1>
         </div>
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogTrigger asChild>
-            <Button
-              variant={'outline'}
-              className='bg-opacity-50 h-fit text-lg lg:text-xl 2xl:text-2xl w-full font-semibold flex justify-center items-center p-3 m-0 gap-4'
-            >
-              <p>Click To Negotiate</p>
-              <GiReceiveMoney className='size-4 lg:size-6' />
-            </Button>
-          </DialogTrigger>
-          <OrderVehicle
-            open={open}
-            setOpen={setOpen}
-            id={vehicle?.documentId as string}
-            title={`${
-              vehicle?.year
-            } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
-            price={Number(vehicle?.price)}
-            negotiate={true}
-          />
-        </Dialog>
+
+        <div className='flex flex-col lg:flex-row gap-4'>
+          <Dialog open={openNegotiate} onOpenChange={setOpenNegotiate}>
+            <DialogTrigger asChild>
+              <Button
+                // variant={'outline'}
+                className='h-fit text-base lg:text-lg 2xl:text-xl w-full font-medium flex justify-center items-center p-3 m-0 gap-4'
+              >
+                <p>{t('vehicle.negotiate')}</p>
+                <GiReceiveMoney className='size-4 lg:size-6' />
+              </Button>
+            </DialogTrigger>
+            <OrderVehicle
+              open={openNegotiate}
+              setOpen={setOpenNegotiate}
+              id={vehicle?.documentId as string}
+              title={`${
+                vehicle?.year
+              } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
+              price={Number(vehicle?.price)}
+              negotiate={true}
+            />
+          </Dialog>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                // variant={'outline'}
+                className='bg-emerald-500 text-white hover:bg-emerald-600 h-fit text-base lg:text-lg 2xl:text-xl w-full font-medium flex justify-center items-center p-3 m-0 gap-4'
+              >
+                <p>Test Drive</p>
+                <IoCarOutline className='size-4 lg:size-6' />
+              </Button>
+            </DialogTrigger>
+            <TestDriveForm
+              id={vehicle?.documentId as string}
+              vehicle={`${
+                vehicle?.year
+              } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
+              open={openTestDrive}
+              setOpen={setOpenTestDrive}
+            />
+          </Dialog>
+
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                // variant={'outline'}
+                className='bg-emerald-500 text-white hover:bg-emerald-600 h-fit text-base lg:text-lg 2xl:text-xl w-full font-medium flex justify-center items-center p-3 m-0 gap-4'
+              >
+                <p>Get A Call</p>
+                <VscCallIncoming className='size-4 lg:size-6' />
+              </Button>
+            </DialogTrigger>
+            <GetACallForm />
+          </Dialog>
+        </div>
       </div>
     </div>
   );

@@ -19,6 +19,7 @@ export const getAutoParts = async ({
     {
       fields: ['documentId', 'name', 'oem', 'cars', 'price', 'stock'],
       populate: { images: true },
+      sort: [{ createdAt: 'desc' }],
       filters: {
         $or: [
           { oem: { $containsi: search } },

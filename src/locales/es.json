@@ -1,0 +1,118 @@
+{
+  "translation": {
+    "navbar": {
+      "parts": "Piezas de automóvil",
+      "services": "Servicios",
+      "vehicles": "Vehículos"
+    },
+
+    "about": {
+      "title": "Sobre Nosotros",
+      "desc": "Nuestra empresa, Elite Autos, vende repuestos para BMW y Subaru, pero también tenemos una sección 'Varios' donde puedes encontrar productos de otras marcas de automóviles. Estamos ubicados en dos estados: Massachusetts y Carolina del Sur. Contamos con direcciones donde puedes venir en persona para ver los artículos que deseas comprar. Además, ofrecemos servicios de detallado de automóviles, actualmente solo disponibles en Massachusetts."
+    },
+
+    "footer": {
+      "city": "Massachusetts",
+      "state": "Carolina del Sur",
+      "builtBy": "Construido por"
+    },
+
+    "filtration": {
+      "subaru": "Subaru",
+      "all": "Todos",
+      "searchCar": "Buscar un coche...",
+      "searchPart": "Buscar una pieza de coche..."
+    },
+
+    "price": "Precio",
+    "cart": {
+      "buy": "Comprar",
+      "remove": "Eliminar",
+      "check": "Revisar carrito.",
+      "serviceAdd": "Servicio añadido al carrito.",
+      "serviceRemove": "Servicio eliminado del carrito.",
+      "partAdd": "Pieza de coche añadida al carrito.",
+      "partRemove": "Pieza de coche eliminada del carrito."
+    },
+
+    "partTable": {
+      "details": "Detalles",
+      "name": "Nombre",
+      "oem": "OEM",
+      "cars": "Coches",
+      "stock": "En stock",
+      "status": "Estado",
+      "desc": "Descripción",
+      "tags": "Etiquetas"
+    },
+
+    "vehicle": {
+      "details": "Detalles",
+      "mark": "Marca",
+      "model": "Modelo",
+      "year": "Año",
+      "odometer": "Odómetro",
+      "vin": "VIN",
+      "engine": "Cilindrada",
+      "transmission": "Transmisión",
+      "power": "Potencia",
+      "seats": "Asientos",
+      "body": "Carrocería",
+      "color": "Color",
+      "fuel": "Combustible",
+      "traction": "Tracción",
+      "wheel": "Rueda",
+      "desc": "Descripción",
+      "tags": "Etiquetas",
+      "order": "Orden",
+      "negotiate": "Negociar"
+    },
+
+    "order": {
+      "lab_1": "Nombre y Apellido",
+      "place_1": "Tu nombre y apellido...",
+      "lab_2": "Correo Electrónico",
+      "place_2": "Tu correo electrónico...",
+      "lab_3": "Contacto",
+      "place_3": "Tu número de teléfono...",
+      "lab_4": "Negociar",
+      "place_4": "Negociar precio...",
+      "total": "Total",
+      "negotiate": "Iniciar negociación",
+      "order": "Realizar pedido"
+    },
+    "emptyCart": {
+      "empty": "El carrito está vacío.",
+      "parts": "Comprar repuestos",
+      "services": "Comprar servicios",
+      "vehicles": "Ordenar vehículos",
+      "home": "Volver a inicio"
+    },
+
+    "productInCart": {
+      "part": "Repuesto de auto:",
+      "service": "Servicio:",
+      "price": "Precio:",
+      "quantity": "Cantidad",
+      "total": "Total"
+    },
+
+    "checkOut": {
+      "price": "Precio total:",
+      "p_x_q": "Producto x Cantidad",
+      "total": "Total",
+      "checkout": "Finalizar compra"
+    },
+
+    "pagination": {
+      "next": "Siguiente",
+      "prev": "Anterior"
+    },
+
+    "error": {
+      "title": "¡Ups, algo salió mal!",
+      "desc": "Hubo un problema al recuperar los datos. Esto podría deberse a un problema de red o a que el servidor esté temporalmente no disponible. Por favor, verifique su conexión a internet y vuelva a intentarlo más tarde. Si el problema persiste, póngase en contacto con el soporte.",
+      "home": "Ir a inicio"
+    }
+  }
+}

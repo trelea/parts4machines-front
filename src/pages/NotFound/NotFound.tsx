@@ -2,8 +2,10 @@ import Image from '@/components/Image';
 import Loyout from '@/components/Loyout';
 import { Button } from '@/components/ui/button';
 import img404 from '@/assets/page404.png';
+import { useTranslation } from 'react-i18next';
 
 export default function NotFound() {
+  const { t } = useTranslation();
   return (
     <Loyout>
       <div className='flex justify-center items-center w-full h-dvh'>
@@ -17,7 +19,7 @@ export default function NotFound() {
             </div>
           </div>
           <Button className='bg-foreground font-normal text-xs md:text-base lg:text-lg xl:text-xl 2xl:text-2xl py-4 px-8 h-fit w-fit rounded-2xl'>
-            Перейти на главную
+            {t('emptyCart.home')}
           </Button>
         </div>
       </div>

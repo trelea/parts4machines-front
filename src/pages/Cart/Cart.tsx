@@ -32,8 +32,8 @@ export default function Cart() {
         {isEmpty ? (
           <EmptyCart />
         ) : (
-          <div className='flex flex-col 2xl:flex-row gap-6'>
-            <ScrollArea className='h-[750px]'>
+          <div className='flex flex-col 2xl:flex-row gap-6 w-full'>
+            <ScrollArea className='h-[750px] 2xl:w-2/3'>
               <div className='flex flex-col gap-6'>
                 {/* Render Services In Cart */}
                 {!isLoading &&

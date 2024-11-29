@@ -19,6 +19,7 @@ export const getServices = async (): Promise<
         'description_es',
         'price',
       ],
+      sort: [{ createdAt: 'desc' }],
       populate: {
         image: true,
       },

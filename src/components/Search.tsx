@@ -1,14 +1,22 @@
 import React from 'react';
 import { Button } from './ui/button';
 import { Search } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   search: string;
   setSearch: (str: string) => void;
+  forVehicles?: boolean;
 }
 
-export default function SearchBar({ setSearch, search }: Props) {
+export default function SearchBar({ setSearch, search, forVehicles }: Props) {
+  const { t } = useTranslation();
   const ref = React.useRef<any>();
+
+  React.useEffect(() => {
+    ref.current.value = search;
+  }, [search]);
+
   return (
     <div className='w-full'>
       <div className='w-full flex flex-col-reverse gap-3 2xl:gap-6 xl:w-2/3 2xl:w-1/2 xl:flex-row'>
@@ -19,7 +27,7 @@ export default function SearchBar({ setSearch, search }: Props) {
             }`}
             onClick={() => setSearch('subaru')}
           >
-            Subaru
+            {t('filtration.subaru')}
           </Button>
           <Button
             className={`font-semibold h-fit text-base rounded-xl bg-transparent text-foreground border border-foreground w-full p-0 m-0 py-2 xl:w-32 xl:py-3 ${
@@ -27,7 +35,7 @@ export default function SearchBar({ setSearch, search }: Props) {
             }`}
             onClick={() => setSearch('')}
           >
-            All
+            {t('filtration.all')}
           </Button>
         </div>
 
@@ -40,7 +48,7 @@ export default function SearchBar({ setSearch, search }: Props) {
             const search = new FormData(e.target).get('search');
             // @ts-ignore
             if (String(search).replaceAll(' ', '') !== '') setSearch(search);
-            ref.current.value = '';
+            // ref.current.value = '';
           }}
         >
           <input
@@ -48,7 +56,16 @@ export default function SearchBar({ setSearch, search }: Props) {
             type='text'
             className='bg-transparent w-full text-black focus:outline-none'
             name='search'
-            placeholder='Search your car...'
+            placeholder={
+              forVehicles
+                ? t('filtration.searchCar')
+                : t('filtration.searchPart')
+            }
+            onChange={(e) =>
+              e.target.value === '' || e.target.value === null
+                ? setSearch('')
+                : null
+            }
           />
           <button type='submit'>
             <Search className='text-black' />

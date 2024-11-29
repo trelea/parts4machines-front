@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
-import React from 'react';
 import Image from './Image';
 
 interface Props {
@@ -21,7 +20,12 @@ export default function Card({
 }: Props) {
   return (
     <div className={cn('relative w-full', className)}>
-      <Image src={smallImg} alt='' loading='lazy' className='sm:hidden' />
+      <Image
+        src={smallImg}
+        alt={smallImg}
+        loading='lazy'
+        className='sm:hidden'
+      />
 
       <Image src={img} alt={img} loading='lazy' className='hidden sm:block' />
 

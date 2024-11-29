@@ -23,7 +23,7 @@ import { useCartStore } from '@/store/store';
 import { CartState } from '@/store/types';
 
 export default function Navbar() {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const path = useGetWithoutLocale();
   const { services, parts } = useCartStore((state: CartState) => state);
 
@@ -42,24 +42,24 @@ export default function Navbar() {
       <ul className='hidden xl:flex gap-10 text-xl font-medium'>
         <li
           className={`hover:animate-bounce ${
+            path === 'vehicles' && 'underline'
+          }`}
+        >
+          <Link to={`/${i18n.language}/vehicles`}>{t('navbar.vehicles')}</Link>
+        </li>
+        <li
+          className={`hover:animate-bounce ${
             path === 'autoparts' && 'underline'
           }`}
         >
-          <Link to={`/${i18n.language}/autoparts`}>Auto Parts</Link>
+          <Link to={`/${i18n.language}/autoparts`}>{t('navbar.parts')}</Link>
         </li>
         <li
           className={`hover:animate-bounce ${
             path === 'services' && 'underline'
           }`}
         >
-          <Link to={`/${i18n.language}/services`}>Services</Link>
-        </li>
-        <li
-          className={`hover:animate-bounce ${
-            path === 'vehicles' && 'underline'
-          }`}
-        >
-          <Link to={`/${i18n.language}/vehicles`}>Vehicles</Link>
+          <Link to={`/${i18n.language}/services`}>{t('navbar.services')}</Link>
         </li>
         {/* <li className={`hover:animate-bounce ${path === '' && 'underline'}`}>
           <Link to={`/${i18n.language}/`}>FAQ</Link>
@@ -81,7 +81,9 @@ export default function Navbar() {
           </Select>
         </li>
         <li
-          className={`hover:animate-bounce fixed backdrop-blur-xl z-50 mr-32 xl:mr-0 ${
+          className={`hover:animate-bounce fixed ${
+            path === 'cart' ? 'bg-white' : 'bg-background/50'
+          } backdrop-blur-xl z-50 mr-32 xl:mr-0 ${
             path === 'cart' && 'bg-foreground'
           } rounded-full flex justify-center items-center`}
         >
@@ -103,7 +105,7 @@ export default function Navbar() {
             </div>
           )}
         </li>
-        <li className='xl:hidden fixed z-50 mr-5 backdrop-blur-xl rounded-full aspect-square flex justify-center items-center p-3'>
+        <li className='xl:hidden fixed z-50 mr-5 bg-background/50 backdrop-blur-xl rounded-full aspect-square flex justify-center items-center p-3'>
           <Sheet>
             <SheetTrigger>
               <Menu className='bg-transparent size-6 text-foreground' />
@@ -119,25 +121,32 @@ export default function Navbar() {
               <ul className='flex flex-col text-xl font-medium text-background gap-6 mt-6'>
                 <li
                   className={`hover:animate-bounce ${
+                    path === 'vehicles' && 'underline'
+                  }`}
+                >
+                  <Link to={`/${i18n.language}/vehicles`}>
+                    {t('navbar.vehicles')}
+                  </Link>
+                </li>
+                <li
+                  className={`hover:animate-bounce ${
                     path === 'autoparts' && 'underline'
                   }`}
                 >
-                  <Link to={`/${i18n.language}/autoparts`}>Auto Parts</Link>
+                  <Link to={`/${i18n.language}/autoparts`}>
+                    {t('navbar.parts')}
+                  </Link>
                 </li>
                 <li
                   className={`hover:animate-bounce ${
                     path === 'services' && 'underline'
                   }`}
                 >
-                  <Link to={`/${i18n.language}/services`}>Services</Link>
+                  <Link to={`/${i18n.language}/services`}>
+                    {t('navbar.services')}
+                  </Link>
                 </li>
-                <li
-                  className={`hover:animate-bounce ${
-                    path === 'vehicles' && 'underline'
-                  }`}
-                >
-                  <Link to={`/${i18n.language}/vehicles`}>Vehicles</Link>
-                </li>
+
                 {/* <li
                   className={`hover:animate-bounce ${
                     path === '' && 'underline'

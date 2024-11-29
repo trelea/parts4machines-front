@@ -11,38 +11,33 @@ import { useTranslation } from 'react-i18next';
 import Image from './Image';
 
 export default function Hero() {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   return (
     <section className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-7 lg:gap-9 xl:gap-11 2xl:gap-14 px-8 md:px-11 lg:px-40 2xl:px-56 w-full mb-8'>
       <Card
+        img={cars}
+        smallImg={_cars}
+        btnText={t('navbar.vehicles')}
+        href={`/${i18n.language}/vehicles`}
+      />
+      <Card
         img={autoparts}
         smallImg={_autoparts}
-        btnText='Автозапчасти'
+        btnText={t('navbar.parts')}
         href={`/${i18n.language}/autoparts`}
       />
       <Card
         img={services}
         smallImg={_services}
-        btnText='Детейлинг'
+        btnText={t('navbar.services')}
         href={`/${i18n.language}/services`}
-      />
-      <Card
-        img={cars}
-        smallImg={_cars}
-        btnText='автомобили'
-        href={`/${i18n.language}/vehicles`}
       />
       <div className=''>
         <h1 className='font-normal text-2xl md:text-3xl xl:font-medium xl:text-4xl mb-6'>
-          О компании
+          {t('about.title')}
         </h1>
         <p className='font-normal text-base md:text-xl lg:text-base xl:text-2xl'>
-          Описание краткое - мы продаем запчасти на BMW и Subaru но также у нас
-          есть вкладка разное где вы можете найти различные товары других марок
-          автомобилей. Мы находимся в 2 штатах в Массачусетсе и южной Каролине.
-          Наши адреса где вы сможете приехать на место и посмотреть вживую то ,
-          что хотите приобрести. Также мы можем вам предложить детейлинг вашего
-          автомобиля пока что только в штате Массачусетс.
+          {t('about.desc')}
         </p>
       </div>
       <div className='hidden sm:block'>

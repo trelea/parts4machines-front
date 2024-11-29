@@ -24,7 +24,7 @@ export default function VehicleProductCard({
   href,
 }: Props) {
   const [open, setOpen] = React.useState<boolean>(false);
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
 
   return (
     <div className='border border-foreground bg-foreground/90 rounded-lg hover:bg-foreground/80 shadow-foreground/20 shadow-2xl flex flex-col md:flex-row lg:flex-col h-fit'>
@@ -48,14 +48,14 @@ export default function VehicleProductCard({
         <div className='flex items-end h-full w-full'>
           <div className='space-y-2 w-full'>
             <div className='font-semibold text-base xl:text-lg text-black flex justify-between'>
-              <h1>Price:</h1>
+              <h1>{t('price')}:</h1>
               <h1>${price.toFixed(2)}</h1>
             </div>
 
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
                 <Button className='font-semibold text-sm lg:text-base 2xl:text-lg text-foreground hover:text-primary h-fit bg-background m-0 p-0 hover:bg-black shadow-2xl flex gap-4 px-10 py-2 w-full'>
-                  <p>Order</p>
+                  <p>{t('vehicle.order')}</p>
                   <LuMessageSquarePlus className='size-6' />
                 </Button>
               </DialogTrigger>
@@ -65,6 +65,7 @@ export default function VehicleProductCard({
                 id={id}
                 open={open}
                 setOpen={setOpen}
+                negotiate={false}
               />
             </Dialog>
           </div>

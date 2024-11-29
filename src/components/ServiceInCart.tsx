@@ -12,7 +12,7 @@ export interface Props {
 }
 
 export default function ServiceInCart({ service, quantity }: Props) {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const { increaseServiceQuantity, decreaseServiceQuantity, removeService } =
     useCartStore((state: CartState) => state);
   return (
@@ -40,7 +40,7 @@ export default function ServiceInCart({ service, quantity }: Props) {
       <ul className='border-t md:border-none border-background/10 w-full flex flex-col justify-evenly flex-grow text-black px-4 md:pl-0 md:pr-4 gap-1 py-2'>
         <li className='flex flex-row justify-between'>
           <h1 className='font-normal text-base md:text-lg xl:text-xl text-nowrap'>
-            Service:
+            {t('productInCart.service')}
           </h1>
           <div className='flex justify-end items-center flex-grow'>
             <p className='font-medium text-base md:text-lg xl:text-xl text-wrap'>
@@ -58,7 +58,7 @@ export default function ServiceInCart({ service, quantity }: Props) {
         </li>
         <li className='flex flex-row justify-between'>
           <h1 className='font-normal text-base md:text-lg xl:text-xl'>
-            Price:
+            {t('productInCart.price')}
           </h1>
           <div className='flex justify-end items-center flex-grow'>
             <p className='font-medium text-base md:text-lg xl:text-xl'>
@@ -68,7 +68,7 @@ export default function ServiceInCart({ service, quantity }: Props) {
         </li>
         <li className='flex flex-row justify-between'>
           <h1 className='font-normal text-base md:text-lg xl:text-xl'>
-            Quantity
+            {t('productInCart.quantity')}
           </h1>
           <div className='flex'>
             <button
@@ -94,7 +94,7 @@ export default function ServiceInCart({ service, quantity }: Props) {
         </li>
         <li className='flex flex-row justify-between'>
           <h1 className='font-normal text-base md:text-lg xl:text-xl'>
-            Total:
+            {t('productInCart.total')}
           </h1>
           <div className='flex justify-end items-center flex-grow'>
             <p className='font-medium text-base md:text-lg xl:text-xl'>

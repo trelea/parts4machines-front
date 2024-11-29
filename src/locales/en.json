@@ -1,5 +1,119 @@
 {
   "translation": {
-    "hello": "Hello"
+    "navbar": {
+      "parts": "Auto Parts",
+      "services": "Services",
+      "vehicles": "Vehicles"
+    },
+
+    "about": {
+      "title": "About Us",
+      "desc": "Our company Elite Autos sell parts for BMW and Subaru, but we also have a 'Miscellaneous' section where you can find various products from other car brands. We are located in two states: Massachusetts and South Carolina. Our addresses where you can come in person to see the items you want to purchase. Additionally, we offer car detailing services, currently only in Massachusetts."
+    },
+
+    "footer": {
+      "city": "Massachusetts",
+      "state": "South Carolina",
+      "builtBy": "Built by"
+    },
+
+    "filtration": {
+      "subaru": "Subaru",
+      "all": "All",
+      "searchCar": "Search a car...",
+      "searchPart": "Search an auto part..."
+    },
+
+    "price": "Price",
+    "cart": {
+      "buy": "Buy",
+      "remove": "Remove",
+      "check": "Check Cart.",
+      "serviceAdd": "Service added to cart.",
+      "serviceRemove": "Service removed from cart.",
+      "partAdd": "Auto Part added to cart.",
+      "partRemove": "Auto Part removed from cart."
+    },
+
+    "partTable": {
+      "details": "Details",
+      "name": "Name",
+      "oem": "OEM",
+      "cars": "Cars",
+      "stock": "In Stock",
+      "status": "Status",
+      "desc": "Description",
+      "tags": "Tags"
+    },
+
+    "vehicle": {
+      "details": "Details",
+      "mark": "Mark",
+      "model": "Model",
+      "year": "Year",
+      "odometer": "Odometer",
+      "vin": "VIN",
+      "engine": "Engine Capacity",
+      "transmission": "Transmission",
+      "power": "Power",
+      "seats": "Seats",
+      "body": "Body",
+      "color": "Color",
+      "fuel": "Fuel",
+      "traction": "Traction",
+      "wheel": "Wheel",
+      "desc": "Description",
+      "tags": "Tags",
+      "order": "Order",
+      "negotiate": "Negotiate"
+    },
+
+    "order": {
+      "lab_1": "Name and Surname",
+      "place_1": "Your name and surname...",
+      "lab_2": "Email",
+      "place_2": "Your email...",
+      "lab_3": "Contact",
+      "place_3": "Your phone number...",
+      "lab_4": "Negotiate",
+      "place_4": "Negotiate price...",
+      "total": "Total",
+      "negotiate": "Place Negotiation",
+      "order": "Place Order"
+    },
+
+    "emptyCart": {
+      "empty": "The Cart Is Empty.",
+      "parts": "Buy Auto Parts",
+      "services": "Buy Services",
+      "vehicles": "Order Vehicles",
+      "home": "Go Home"
+    },
+
+    "productInCart": {
+      "part": "Auto Part:",
+      "service": "Service:",
+      "price": "Price:",
+      "quantity": "Quantity",
+      "total": "Total"
+    },
+
+    "checkOut": {
+      "price": "Total Price:",
+      "p_x_q": "Product x Quantity",
+      "total": "Total",
+      "checkout": "Check Out"
+    },
+
+    "pagination": {
+      "next": "Next",
+      "prev": "Prev"
+    },
+
+    "error": {
+      "title": "Ops Somthing Went Wrong!",
+      "desc": "There was an issue retrieving the data. This could be due to a network problem or the server being temporarily unavailable. Please check your internet connection and try again later. If the issue persists, please contact support.",
+      "home": "Go Home"
+    }
   }
 }

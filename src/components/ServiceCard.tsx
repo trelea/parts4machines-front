@@ -13,7 +13,7 @@ interface Props {
 }
 
 export default function ServiceCard({ service }: Props) {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const { isServiceInCart } = useCheckProductsInCart();
   const { addService, removeService } = useCartStore(
     (state: CartState) => state
@@ -43,10 +43,10 @@ export default function ServiceCard({ service }: Props) {
               className='text-sm md:text-base lg:text-lg xl:text-xl 2xl:text-2xl md:py-3 lg:py-4 xl:py-5 2xl:py-6 md:px-16 lg:px-24 xl:px-32 2xl:px-40 h-fit rounded-md 2xl:rounded-xl float-right ml-10'
               onClick={() => {
                 removeService({ documentId: service.documentId });
-                toast({ description: 'Service removed from cart.' });
+                toast({ description: t('cart.serviceRemove') });
               }}
             >
-              Remove
+              {t('cart.remove')}
             </Button>
           ) : (
             <Button
@@ -65,19 +65,19 @@ export default function ServiceCard({ service }: Props) {
                 toast({
                   description: (
                     <p>
-                      Service added to cart.{' '}
+                      {t('cart.serviceAdd')}{' '}
                       <Link
                         to={`/${i18n.language}/cart`}
                         className='text-primary underline'
                       >
-                        Check Cart.
+                        {t('cart.check')}
                       </Link>
                     </p>
                   ),
                 });
               }}
             >
-              Buy ${service.price.toFixed(2)}
+              {t('cart.buy')} ${service.price.toFixed(2)}
             </Button>
           )}
 
@@ -100,10 +100,10 @@ export default function ServiceCard({ service }: Props) {
             className='text-sm sm:text-base sm:py-3 px-8 sm:px-16 h-fit rounded-md 2xl:rounded-xl float-start mr-4'
             onClick={() => {
               removeService({ documentId: service.documentId });
-              toast({ description: 'Service removed from cart.' });
+              toast({ description: t('cart.serviceRemove') });
             }}
           >
-            Remove
+            {t('cart.remove')}
           </Button>
         ) : (
           <Button
@@ -122,19 +122,19 @@ export default function ServiceCard({ service }: Props) {
               toast({
                 description: (
                   <p>
-                    Service added to cart.{' '}
+                    {t('cart.serviceAdd')}{' '}
                     <Link
                       to={`/${i18n.language}/cart`}
                       className='text-primary underline'
                     >
-                      Check Cart
+                      {t('cart.check')}
                     </Link>
                   </p>
                 ),
               });
             }}
           >
-            Buy ${service.price.toFixed(2)}
+            {t('cart.buy')} ${service.price.toFixed(2)}
           </Button>
         )}
 

@@ -21,6 +21,7 @@ export const getVehicles = async ({
     {
       fields: ['documentId', 'mark', 'model', 'year', 'price', 'stock'],
       populate: { images: true },
+      sort: [{ createdAt: 'desc' }],
       filters: {
         $or: [
           { mark: { $containsi: search } },

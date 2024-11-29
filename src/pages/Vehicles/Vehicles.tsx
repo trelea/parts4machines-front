@@ -19,7 +19,7 @@ export default function Vehicles() {
     <Loyout>
       <div className='px-8 md:px-11 lg:px-40 2xl:px-56 w-full min-h-dvh'>
         {/* Search */}
-        <SearchBar setSearch={setSearch} search={search} />
+        <SearchBar setSearch={setSearch} search={search} forVehicles={true} />
 
         {/* Cards */}
         <CardsContainer>

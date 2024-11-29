@@ -28,7 +28,7 @@ export default function AutoPartProductCard({
   documentId,
   name,
 }: Props) {
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const { isPartInCart } = useCheckProductsInCart();
   const { addPart, removePart } = useCartStore((state: CartState) => state);
 
@@ -54,7 +54,7 @@ export default function AutoPartProductCard({
         <div className='flex items-end w-full'>
           <div className='flex flex-col justify-between w-full h-full'>
             <div className='font-semibold text-base xl:text-lg text-black flex justify-between'>
-              <h1>Price:</h1>
+              <h1>{t('price')}:</h1>
               <h1>${price.toFixed(2)}</h1>
             </div>
 
@@ -63,10 +63,10 @@ export default function AutoPartProductCard({
                 className='font-semibold text-sm lg:text-base 2xl:text-lg text-foreground hover:text-primary h-fit bg-background m-0 p-0 hover:bg-black shadow-2xl flex gap-4 px-10 py-2 w-full'
                 onClick={() => {
                   removePart({ documentId });
-                  toast({ description: 'Auto Part removed from cart.' });
+                  toast({ description: t('cart.partRemove') });
                 }}
               >
-                <p>Remove</p>
+                <p>{t('cart.remove')}</p>
                 <MdOutlineRemoveShoppingCart className='size-6' />
               </Button>
             ) : (
@@ -77,19 +77,19 @@ export default function AutoPartProductCard({
                   toast({
                     description: (
                       <p>
-                        Auto Part adde to cart.{' '}
+                        {t('cart.partAdd')}{' '}
                         <Link
                           to={`/${i18n.language}/cart`}
                           className='text-primary underline'
                         >
-                          Check Cart.
+                          {t('cart.check')}
                         </Link>
                       </p>
                     ),
                   });
                 }}
               >
-                <p>Buy</p>
+                <p>{t('cart.buy')}</p>
 
                 <MdOutlineShoppingCart className='size-6' />
               </Button>
