@@ -8,10 +8,6 @@ export default defineConfig({
     chunkSizeWarningLimit: 1600,
   },
   plugins: [react()],
-  server: {
-    host: '192.168.1.8',
-  },
-
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
