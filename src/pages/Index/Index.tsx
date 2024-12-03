@@ -1,17 +1,18 @@
 import Hero from '@/components/Hero';
 import Loyout from '@/components/Loyout';
+import { useAfterPayment } from '@/hooks/useAfterPayment';
 import { useI18n } from '@/hooks/useI18n';
-import { useCartStore } from '@/store/store';
-import { CartState } from '@/store/types';
-import { useSearchParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 export default function Index() {
-  const [queries] = useSearchParams();
-  const { resetCart } = useCartStore((state: CartState) => state);
-  useI18n(queries.get('__reset__cart') === 'true', resetCart);
+  const { t } = useI18n();
+  useAfterPayment(t);
 
   return (
     <Loyout>
+      <Helmet>
+        <title>{`Elite Autos | Home`}</title>
+      </Helmet>
       <Hero />
     </Loyout>
   );

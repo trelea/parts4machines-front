@@ -47,6 +47,7 @@
     },
 
     "vehicle": {
+      "location": "Location",
       "details": "Details",
       "mark": "Mark",
       "model": "Model",
@@ -114,6 +115,32 @@
       "title": "Ops Somthing Went Wrong!",
       "desc": "There was an issue retrieving the data. This could be due to a network problem or the server being temporarily unavailable. Please check your internet connection and try again later. If the issue persists, please contact support.",
       "home": "Go Home"
-    }
+    },
+
+    "callForm": "Shortly, we will contact you to discuss about ",
+    "testDriveForm": "By pressing the place button you will create an appointment for a test drive session with respective vehicle ",
+    "_1": "Clike Here To View More ",
+    "_2": "Vehicles.",
+    "proc": "Processing",
+    "drive": "Drive It",
+    "submit": "Submit",
+    "testDriveBtn": "Test Drive",
+    "getCallBtn": "Get A Call",
+    "invalidContact": "Invalid phone number",
+    "__desc__1": "Thank you for your cooperation, we will contact you shortly.",
+    "__desc__2": "Order Successfully Submited.",
+
+    "payment_fail": {
+      "title": "Payment Failed",
+      "desc": "We're sorry, your payment didn't go through. Please double-check your payment details and try again. If you continue to experience issues, don't hesitate to reach out to our support team."
+    },
+
+    "payment_success": {
+      "title": "Payment Succeed",
+      "desc": "Your payment was successful! Please wait 3-5 minutes for the confirmation email to be sent to the address you provided."
+    },
+
+    "bestdeals": "Best Deals",
+    "more": "More"
   }
 }

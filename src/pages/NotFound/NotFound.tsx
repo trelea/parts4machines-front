@@ -3,11 +3,15 @@ import Loyout from '@/components/Loyout';
 import { Button } from '@/components/ui/button';
 import img404 from '@/assets/page404.png';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 
 export default function NotFound() {
   const { t } = useTranslation();
   return (
     <Loyout>
+      <Helmet>
+        <title>{`Elite Autos | 404`}</title>
+      </Helmet>
       <div className='flex justify-center items-center w-full h-dvh'>
         <div className='flex flex-col items-center gap-10'>
           <div className='relative flex justify-center items-center'>

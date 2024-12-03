@@ -33,7 +33,11 @@ export default function OrderVehicle({
   setOpen,
 }: Props) {
   const { t } = useTranslation();
-  const { onSubmit, form } = useCreateVehicleOrder(id, open, setOpen);
+  const { onSubmit, form, isPending } = useCreateVehicleOrder(
+    id,
+    open,
+    setOpen
+  );
   const [negotiation, setNegotiation] = React.useState<number | null>(null);
 
   return (
@@ -154,13 +158,19 @@ export default function OrderVehicle({
           </div>
 
           <Button
+            disabled={isPending}
             type='submit'
             variant={'default'}
             className='w-full flex items-center gap-4 text-sm md:text-base xl:text-lg 2xl:text-xl font-semibold h-fit'
           >
-            {negotiate ? t('order.negotiate') : t('order.order')}
-
-            <SendHorizonal className='size-4' />
+            {isPending ? (
+              'Processing'
+            ) : (
+              <>
+                {negotiate ? t('order.negotiate') : t('order.order')}
+                <SendHorizonal className='size-4' />
+              </>
+            )}
           </Button>
         </form>
       </Form>

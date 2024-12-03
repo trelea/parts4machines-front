@@ -9,6 +9,7 @@ import { AutoPart, getAutoParts } from '../AutoParts/types/autoparts.types';
 import AutoPartInCart from '@/components/AutoPartInCart';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import TotalSum from '@/components/TotalSum';
+import { Helmet } from 'react-helmet-async';
 
 export default function Cart() {
   useI18n();
@@ -28,6 +29,9 @@ export default function Cart() {
 
   return (
     <Loyout>
+      <Helmet>
+        <title>{`Elite Autos | Cart`}</title>
+      </Helmet>
       <div className='px-8 md:px-11 lg:px-40 2xl:px-56 w-full min-h-dvh'>
         {isEmpty ? (
           <EmptyCart />

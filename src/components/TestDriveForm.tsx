@@ -1,4 +1,3 @@
-import { useForm } from 'react-hook-form';
 import { DialogContent, DialogHeader, DialogTitle } from './ui/dialog';
 import {
   Form,
@@ -14,6 +13,7 @@ import { IoCarOutline } from 'react-icons/io5';
 import { useTranslation } from 'react-i18next';
 import { PhoneInput } from './ui/phone-input';
 import { Link } from 'react-router-dom';
+import { useAdditionalOrder } from '@/pages/Vehicles/hooks/useAdditionalOrders';
 
 interface Props {
   id: string;
@@ -23,7 +23,12 @@ interface Props {
 }
 
 export default function TestDriveForm({ id, vehicle, setOpen, open }: Props) {
-  const form = useForm();
+  const { form, onSubmit, isPending } = useAdditionalOrder({
+    id,
+    open,
+    setOpen,
+    method: 'TEST_DRIVE',
+  });
   const { t, i18n } = useTranslation();
   return (
     <DialogContent className='max-w-[90%] xl:w-[50%] 2xl:w-[33%] rounded-lg lg:rounded-xl'>
@@ -35,7 +40,7 @@ export default function TestDriveForm({ id, vehicle, setOpen, open }: Props) {
       <Form {...form}>
         <form
           action=''
-          onSubmit={form.handleSubmit(() => {})}
+          onSubmit={form.handleSubmit(onSubmit)}
           className='flex flex-col gap-6'
         >
           <FormField
@@ -83,8 +88,7 @@ export default function TestDriveForm({ id, vehicle, setOpen, open }: Props) {
 
           <div className='flex flex-col font-normal text-white/50 text-sm md:text-base xl:text-lg gap-4 border border-white/5 shadow-2xl p-2 rounded-md'>
             <h1>
-              By pressing the place button you will create an appointment for a
-              test drive session with respective vehicle{' '}
+              {t('testDriveForm')}
               <Link
                 to={`/${i18n.language}/vehicles/${id}`}
                 className='hover:underline'
@@ -94,23 +98,30 @@ export default function TestDriveForm({ id, vehicle, setOpen, open }: Props) {
             </h1>
 
             <h1>
-              Clike Here To View More{' '}
+              {t('_1')}
               <Link
                 to={`/${i18n.language}/vehicles`}
                 className='hover:underline'
               >
-                <b>Vehicles.</b>
+                <b>{t('_2')}</b>
               </Link>
             </h1>
           </div>
 
           <Button
+            disabled={isPending}
             type='submit'
             variant={'default'}
             className='bg-emerald-500 text-white hover:bg-emerald-600 w-full flex items-center gap-4 text-sm md:text-base xl:text-lg 2xl:text-xl font-semibold h-fit'
           >
-            Drive It
-            <IoCarOutline className='size-6' />
+            {isPending ? (
+              <>{t('proc')}</>
+            ) : (
+              <>
+                {t('drive')}
+                <IoCarOutline className='size-6' />
+              </>
+            )}
           </Button>
         </form>
       </Form>

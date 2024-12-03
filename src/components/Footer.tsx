@@ -13,8 +13,8 @@ export default function Footer() {
           <Link to={`/${i18n.language}/`}>
             <img
               src={darkLogo}
-              alt=''
-              className='w-24 md:w-28 lg:w-32  xl:w-36 2xl:w-40'
+              alt='Elite Autos Dark Logo'
+              className='w-24 md:w-28 lg:w-32 xl:w-36 2xl:w-40'
             />
           </Link>
         </div>

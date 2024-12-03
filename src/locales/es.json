@@ -47,6 +47,7 @@
     },
 
     "vehicle": {
+      "location": "Ubicación",
       "details": "Detalles",
       "mark": "Marca",
       "model": "Modelo",
@@ -113,6 +114,32 @@
       "title": "¡Ups, algo salió mal!",
       "desc": "Hubo un problema al recuperar los datos. Esto podría deberse a un problema de red o a que el servidor esté temporalmente no disponible. Por favor, verifique su conexión a internet y vuelva a intentarlo más tarde. Si el problema persiste, póngase en contacto con el soporte.",
       "home": "Ir a inicio"
-    }
+    },
+
+    "callForm": "En breve, nos pondremos en contacto contigo para discutir sobre ",
+    "testDriveForm": "Al presionar el botón de lugar, crearás una cita para una sesión de prueba de conducción con el vehículo correspondiente ",
+    "_1": "Haz clic aquí para ver más ",
+    "_2": "Vehículos.",
+    "proc": "Procesando",
+    "drive": "Conducirlo",
+    "submit": "Enviar",
+    "testDriveBtn": "Prueba de Conducción",
+    "getCallBtn": "Recibir una llamada",
+    "invalidContact": "Número de teléfono inválido",
+    "__desc__1": "Gracias por tu cooperación, nos pondremos en contacto contigo en breve.",
+    "__desc__2": "Pedido enviado con éxito.",
+
+    "payment_fail": {
+      "title": "Pago Fallido",
+      "desc": "Lo sentimos, tu pago no se completó. Por favor, revisa tus detalles de pago y vuelve a intentarlo. Si continúas teniendo problemas, no dudes en ponerte en contacto con nuestro equipo de soporte."
+    },
+
+    "payment_success": {
+      "title": "Pago Exitoso",
+      "desc": "Tu pago fue exitoso! Por favor, espera de 3 a 5 minutos para que el correo de confirmación sea enviado a la dirección que proporcionaste."
+    },
+
+    "bestdeals": "Mejores Ofertas",
+    "more": "Más"
   }
 }

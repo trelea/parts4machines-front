@@ -19,7 +19,7 @@ export default function TotalSum() {
   const { i18n, t } = useTranslation();
   const { services, parts } = useCartStore((state: CartState) => state);
   const [total, setTotal] = React.useState<null | number>(null);
-  const { checkout } = useCheckOut();
+  const { checkout, isPending } = useCheckOut();
 
   React.useEffect(() => {
     let total = 0;
@@ -87,11 +87,18 @@ export default function TotalSum() {
       </ScrollArea>
 
       <Button
+        disabled={isPending}
         className='w-full text-base lg:text-lg 2xl:text-xl font-medium h-fit py-2'
         onClick={() => checkout({ services, parts })}
       >
-        {t('checkOut.checkout')}
-        <CircleDollarSign />
+        {isPending ? (
+          t('proc')
+        ) : (
+          <>
+            {t('checkOut.checkout')}
+            <CircleDollarSign />
+          </>
+        )}
       </Button>
     </section>
   );

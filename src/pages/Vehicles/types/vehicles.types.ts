@@ -16,6 +16,7 @@ export interface Vehicle {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+  location: string;
   images: {
     formats: {
       large: { url: string; name: string };
@@ -79,4 +80,8 @@ export interface PostVehicleOrderRes {
   client: string;
   negotiate: number | null;
   contact: string;
+}
+
+export interface AdditionalForm {
+  data: { client: string; contact: string; car: string };
 }

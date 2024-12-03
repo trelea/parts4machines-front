@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from './ui/carousel';
+import { filteringImage } from '@/lib/utils';
 
 interface Props {
   images:
@@ -29,9 +30,9 @@ export default function ProductImageSlider({ images }: Props) {
         <div>
           <Image
             src={`${import.meta.env.VITE_API_URL}${
-              images && images[thumb].formats.large.url
+              images && filteringImage(images[thumb])?.url
             }`}
-            alt={images && images[thumb].formats.large.name}
+            alt={images && filteringImage(images[thumb])?.name}
             className='rounded-3xl shadow-2xl h-[450px] xl:h-[500px] 2xl:h-[550px] w-full object-contain border border-white border-opacity-10'
           />
         </div>
@@ -75,7 +76,10 @@ export default function ProductImageSlider({ images }: Props) {
                   <Image
                     className='w-full object-contain object-center rounded-lg shadow-2xl h-64 sm:h-80 md:h-96 border border-white border-opacity-10'
                     src={`${import.meta.env.VITE_API_URL}${
-                      i && i.formats.large.url
+                      i && filteringImage(images[thumb])?.url
+                    }`}
+                    alt={`${import.meta.env.VITE_API_URL}${
+                      i && filteringImage(images[thumb])?.name
                     }`}
                   />
                 </div>

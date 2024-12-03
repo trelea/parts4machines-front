@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Minus, Plus, Trash2 } from 'lucide-react';
 import { useCartStore } from '@/store/store';
 import { CartState } from '@/store/types';
+import { filteringImage } from '@/lib/utils';
 
 export interface Props {
   service: Service;
@@ -30,7 +31,10 @@ export default function ServiceInCart({ service, quantity }: Props) {
         >
           <Image
             src={`${import.meta.env.VITE_API_URL}/${
-              service.image.formats.large.url
+              filteringImage(service.image)?.url
+            }`}
+            alt={`${import.meta.env.VITE_API_URL}/${
+              filteringImage(service.image)?.name
             }`}
             className='object-center object-cover rounded-xl h-full w-full md:w-96'
           />

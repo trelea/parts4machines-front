@@ -1,6 +1,7 @@
 import { axiosApi } from '@/config/axios';
 import { AxiosResponse } from 'axios';
 import {
+  AdditionalForm,
   PostVehicleOrder,
   PostVehicleOrderRes,
   getVehicle as getVehicleType,
@@ -51,4 +52,16 @@ export const postVehicleOrder = async (
   data: PostVehicleOrder
 ): Promise<AxiosResponse<PostVehicleOrderRes>> => {
   return await axiosApi.post<PostVehicleOrderRes>('/vehilcles-orders', data);
+};
+
+export const postTestDrive = async (
+  data: AdditionalForm
+): Promise<AxiosResponse<{ status: 'sent' }>> => {
+  return await axiosApi.post<{ status: 'sent' }>(`/test-drives`, data);
+};
+
+export const postGetCall = async (
+  data: AdditionalForm
+): Promise<AxiosResponse<{ status: 'sent' }>> => {
+  return await axiosApi.post<{ status: 'sent' }>(`/get-calls`, data);
 };

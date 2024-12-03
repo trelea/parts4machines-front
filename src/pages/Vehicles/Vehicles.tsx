@@ -7,6 +7,8 @@ import { Vehicle } from './types/vehicles.types';
 import Paginatinate from '@/components/Pagination';
 import SearchBar from '@/components/Search';
 import ErrorFetchDialog from '@/components/ErrorFetchDialog';
+import { filteringImage } from '@/lib/utils';
+import { Helmet } from 'react-helmet-async';
 
 export default function Vehicles() {
   useI18n();
@@ -17,6 +19,9 @@ export default function Vehicles() {
 
   return (
     <Loyout>
+      <Helmet>
+        <title>{`Elite Autos | Vehicles`}</title>
+      </Helmet>
       <div className='px-8 md:px-11 lg:px-40 2xl:px-56 w-full min-h-dvh'>
         {/* Search */}
         <SearchBar setSearch={setSearch} search={search} forVehicles={true} />
@@ -29,7 +34,7 @@ export default function Vehicles() {
                 <VehicleProductCard
                   key={car.documentId}
                   id={car.documentId}
-                  thumb={car?.images[0]?.formats.large.url}
+                  thumb={filteringImage(car?.images[0])?.url as string}
                   title={`${car.year} ${car.mark} ${car.model}`}
                   price={car.price}
                   href={`/vehicles/${car.documentId}`}

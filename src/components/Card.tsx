@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
 import Image from './Image';
+import { TFunction } from 'i18next';
 
 interface Props {
   img: string;
@@ -9,6 +10,8 @@ interface Props {
   btnText: string;
   href: string;
   className?: string;
+  bestDeals?: boolean;
+  t?: TFunction<'translation', undefined>;
 }
 
 export default function Card({
@@ -17,6 +20,8 @@ export default function Card({
   btnText,
   href,
   className,
+  bestDeals,
+  t,
 }: Props) {
   return (
     <div className={cn('relative w-full', className)}>
@@ -26,6 +31,17 @@ export default function Card({
         loading='lazy'
         className='sm:hidden'
       />
+
+      {bestDeals && (
+        <Link
+          to={href}
+          className='absolute bottom-0 right-0 w-1/2 p-2 500px:p-4 sm:hidden hover:animate-bounce'
+        >
+          <Button className='w-full bg-[#da6e00] py-6 400px:py-7 450px:py-8 rounded-2xl text-foreground shadow-2xl shadow-black/50 text-xs 500px:text-sm hover:animate-bounce hover:bg-[#da6e00]'>
+            {t && t('bestdeals')}
+          </Button>
+        </Link>
+      )}
 
       <Image src={img} alt={img} loading='lazy' className='hidden sm:block' />
 

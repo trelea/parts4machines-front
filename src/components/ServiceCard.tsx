@@ -7,6 +7,7 @@ import { useCartStore } from '@/store/store';
 import { CartState } from '@/store/types';
 import { toast } from '@/hooks/use-toast';
 import { Link } from 'react-router-dom';
+import { filteringImage } from '@/lib/utils';
 
 interface Props {
   service: Service;
@@ -34,7 +35,10 @@ export default function ServiceCard({ service }: Props) {
         <Image
           className='w-full max-h-[700px] object-cover object-center rounded-xl shadow-2xl border border-white border-opacity-25 brightness-50'
           src={`${import.meta.env.VITE_API_URL}${
-            service.image.formats.large.url
+            filteringImage(service.image)?.url
+          }`}
+          alt={`${import.meta.env.VITE_API_URL}${
+            filteringImage(service.image)?.name
           }`}
         />
         <div className='hidden md:block absolute bottom-0 p-6 lg:p-7 xl:p-8 2xl:p-10 w-full'>

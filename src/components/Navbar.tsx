@@ -33,7 +33,7 @@ export default function Navbar() {
         <Link to={`/${i18n.language}/`}>
           <img
             src={logo}
-            alt=''
+            alt='Elite Autos Light Logo'
             className='w-24 md:w-28 lg:w-32  xl:w-36 2xl:w-40'
           />
         </Link>
@@ -41,21 +41,21 @@ export default function Navbar() {
 
       <ul className='hidden xl:flex gap-10 text-xl font-medium'>
         <li
-          className={`hover:animate-bounce ${
+          className={`hover:animate-bounce border border-[#E6CCB2]/80 rounded-lg p-1 px-6 2xl:px-10 flex justify-center items-center ${
             path === 'vehicles' && 'underline'
           }`}
         >
           <Link to={`/${i18n.language}/vehicles`}>{t('navbar.vehicles')}</Link>
         </li>
         <li
-          className={`hover:animate-bounce ${
+          className={`hover:animate-bounce border border-[#E6CCB2]/80 rounded-lg p-1 px-6 2xl:px-10 flex justify-center items-center ${
             path === 'autoparts' && 'underline'
           }`}
         >
           <Link to={`/${i18n.language}/autoparts`}>{t('navbar.parts')}</Link>
         </li>
         <li
-          className={`hover:animate-bounce ${
+          className={`hover:animate-bounce border border-[#E6CCB2]/80 rounded-lg p-1 px-6 2xl:px-10 flex justify-center items-center ${
             path === 'services' && 'underline'
           }`}
         >
@@ -67,23 +67,23 @@ export default function Navbar() {
       </ul>
 
       <ul className='flex gap-6 2xl:gap-10 items-center justify-center relative'>
-        <li className='hidden xl:flex mr-28'>
+        <li className='fixed mr-[272px] z-50 xl:mr-32 border border-[#E6CCB2]/80 rounded-full aspect-square flex justify-center items-center bg-background/50 backdrop-blur-xl'>
           <Select onValueChange={(e) => setLang(e)}>
-            <SelectTrigger className='w-fit border-none outline-none focus-visible:outline-none focus:outline-none ring-0 focus:ring-0 focus-visible:ring-0 rounded-none text-xl font-medium'>
+            <SelectTrigger className='w-fit border-none outline-none focus-visible:outline-none focus:outline-none ring-0 focus:ring-0 focus-visible:ring-0 text-xl font-medium  bg-transparent rounded-full focus:border-none aspect-square flex justify-center items-center'>
               <SelectValue placeholder={i18n.language} />
             </SelectTrigger>
             <SelectContent className=''>
-              <SelectItem value='en'>En</SelectItem>
-              <SelectItem value='ru'>Ru</SelectItem>
-              <SelectItem value='ua'>Ua</SelectItem>
-              <SelectItem value='es'>Es</SelectItem>
+              <SelectItem value='en'>en</SelectItem>
+              <SelectItem value='ru'>ru</SelectItem>
+              <SelectItem value='ua'>ua</SelectItem>
+              <SelectItem value='es'>es</SelectItem>
             </SelectContent>
           </Select>
         </li>
         <li
-          className={`hover:animate-bounce fixed ${
+          className={`hover:animate-bounce fixed border border-[#E6CCB2]/80 ${
             path === 'cart' ? 'bg-white' : 'bg-background/50'
-          } backdrop-blur-xl z-50 mr-32 xl:mr-0 ${
+          } backdrop-blur-xl z-50 mr-36 xl:mr-0 ${
             path === 'cart' && 'bg-foreground'
           } rounded-full flex justify-center items-center`}
         >
@@ -105,7 +105,7 @@ export default function Navbar() {
             </div>
           )}
         </li>
-        <li className='xl:hidden fixed z-50 mr-5 bg-background/50 backdrop-blur-xl rounded-full aspect-square flex justify-center items-center p-3'>
+        <li className='xl:hidden border border-[#E6CCB2]/80 fixed z-50 mr-5 bg-background/50 backdrop-blur-xl rounded-full aspect-square flex justify-center items-center p-3'>
           <Sheet>
             <SheetTrigger>
               <Menu className='bg-transparent size-6 text-foreground' />
@@ -160,10 +160,10 @@ export default function Navbar() {
                       <SelectValue placeholder={i18n.language} />
                     </SelectTrigger>
                     <SelectContent className='bg-transparent text-background'>
-                      <SelectItem value='en'>En</SelectItem>
-                      <SelectItem value='ru'>Ru</SelectItem>
-                      <SelectItem value='ua'>Ua</SelectItem>
-                      <SelectItem value='es'>Es</SelectItem>
+                      <SelectItem value='en'>en</SelectItem>
+                      <SelectItem value='ru'>ru</SelectItem>
+                      <SelectItem value='ua'>ua</SelectItem>
+                      <SelectItem value='es'>es</SelectItem>
                     </SelectContent>
                   </Select>
                 </li>

@@ -1,5 +1,5 @@
-import bmw from '@/assets/bmw.png';
-import zavod from '@/assets/zavod.png';
+import subaru from '@/assets/subaru.png';
+import luck from '@/assets/luck.png';
 import Card from './Card';
 import autoparts from '@/assets/autoparts.png';
 import services from '@/assets/services.png';
@@ -19,6 +19,8 @@ export default function Hero() {
         smallImg={_cars}
         btnText={t('navbar.vehicles')}
         href={`/${i18n.language}/vehicles`}
+        bestDeals
+        t={t}
       />
       <Card
         img={autoparts}
@@ -41,14 +43,14 @@ export default function Hero() {
         </p>
       </div>
       <div className='hidden sm:block'>
-        <Image src={bmw} alt={bmw} loading='lazy' />
+        <Image src={subaru} alt={subaru} loading='lazy' />
       </div>
       <div className='hidden sm:block'>
-        <Image src={zavod} alt={bmw} loading='lazy' />
+        <Image src={luck} alt={luck} loading='lazy' />
       </div>
       <div className='grid grid-cols-2 gap-3 sm:hidden'>
-        <Image src={bmw} alt={bmw} loading='lazy' />
-        <Image src={zavod} alt={bmw} loading='lazy' />
+        <Image src={subaru} alt={subaru} loading='lazy' />
+        <Image src={luck} alt={luck} loading='lazy' />
       </div>
     </section>
   );

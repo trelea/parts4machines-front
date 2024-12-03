@@ -5,6 +5,7 @@ import { Minus, Plus, Trash2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import Image from './Image';
+import { filteringImage } from '@/lib/utils';
 
 interface Props {
   part: AutoPart;
@@ -31,7 +32,7 @@ export default function AutoPartInCart({ part, quantity }: Props) {
         >
           <Image
             src={`${import.meta.env.VITE_API_URL}/${
-              part.images[0].formats.large.url
+              filteringImage(part.images[0])?.url
             }`}
             className='object-center object-cover rounded-xl h-full w-full md:w-96'
           />

@@ -7,25 +7,25 @@ import { PostVehicleOrder } from '../types/vehicles.types';
 import { postVehicleOrder } from '../api/vehicles.apis';
 import { AxiosError } from 'axios';
 import { toast } from '@/hooks/use-toast';
-import { Flashlight } from 'lucide-react';
-
-const formSchema = z.object({
-  client: z.string(),
-  email: z.string().email(),
-  contact: z
-    .string()
-    .refine(isValidPhoneNumber, { message: 'Invalid phone number' }),
-  negotiate: z.coerce
-    .number()
-    .optional()
-    .transform((x) => (x ? x : '')),
-});
+import { useTranslation } from 'react-i18next';
 
 export const useCreateVehicleOrder = (
   id: string,
   open: boolean,
   setOpen: (_: boolean) => void
 ) => {
+  const { t } = useTranslation();
+  const formSchema = z.object({
+    client: z.string(),
+    email: z.string().email(),
+    contact: z
+      .string()
+      .refine(isValidPhoneNumber, { message: t('invalidContact') }),
+    negotiate: z.coerce
+      .number()
+      .optional()
+      .transform((x) => (x ? x : '')),
+  });
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,23 +36,23 @@ export const useCreateVehicleOrder = (
     },
   });
 
-  const mutation = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: ['order-vehicle', id],
     mutationFn: async (data: PostVehicleOrder) => postVehicleOrder(data),
     onError: (err: AxiosError) => {
       toast({ description: err.message });
-      setTimeout(() => setOpen(!open), 1000);
+      setTimeout(() => setOpen(!open), 250);
     },
     onSuccess: () => {
-      toast({ description: 'Order Successfully Submited.' });
-      setTimeout(() => setOpen(!open), 1000);
+      toast({ description: t('__desc__2') });
+      setTimeout(() => setOpen(!open), 250);
     },
   });
 
   const onSubmit = (val: z.infer<typeof formSchema>) => {
     const { negotiate, ...rest } = val;
 
-    mutation.mutate({
+    mutate({
       data: {
         ...rest,
         negotiate: negotiate === '' ? null : negotiate,
@@ -63,5 +63,5 @@ export const useCreateVehicleOrder = (
     form.reset();
   };
 
-  return { form, onSubmit };
+  return { form, onSubmit, isPending };
 };

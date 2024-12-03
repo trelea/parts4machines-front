@@ -14,7 +14,7 @@ import { Badge } from './ui/badge';
 import { GiReceiveMoney } from 'react-icons/gi';
 import { LuMessageSquarePlus } from 'react-icons/lu';
 import { VscCallIncoming } from 'react-icons/vsc';
-import { Dialog, DialogContent, DialogTrigger } from './ui/dialog';
+import { Dialog, DialogTrigger } from './ui/dialog';
 import { IoCarOutline } from 'react-icons/io5';
 import OrderVehicle from './OrderVehicle';
 import React from 'react';
@@ -44,6 +44,7 @@ export default function VehicleDetails({ vehicle }: Props) {
   const [open, setOpen] = React.useState<boolean>(false);
   const [openNegotiate, setOpenNegotiate] = React.useState<boolean>(false);
   const [openTestDrive, setOpenTestDrive] = React.useState<boolean>(false);
+  const [openGetCall, setOpenGetCall] = React.useState<boolean>(false);
 
   const { i18n, t } = useTranslation();
 
@@ -64,6 +65,14 @@ export default function VehicleDetails({ vehicle }: Props) {
               </TableRow>
             </TableHeader>
             <TableBody className='text-xs md:text-sm xl:text-base font-medium'>
+              <TableRow>
+                <TableCell>{t('vehicle.location')}</TableCell>
+                <TableCell
+                  dangerouslySetInnerHTML={{
+                    __html: vehicle?.location.replace(',', `<br/>`) as string,
+                  }}
+                ></TableCell>
+              </TableRow>
               <TableRow>
                 <TableCell>{t('vehicle.mark')}</TableCell>
                 <TableCell>{vehicle?.mark}</TableCell>
@@ -219,13 +228,13 @@ export default function VehicleDetails({ vehicle }: Props) {
               negotiate={true}
             />
           </Dialog>
-          <Dialog>
+          <Dialog open={openTestDrive} onOpenChange={setOpenTestDrive}>
             <DialogTrigger asChild>
               <Button
                 // variant={'outline'}
                 className='bg-emerald-500 text-white hover:bg-emerald-600 h-fit text-base lg:text-lg 2xl:text-xl w-full font-medium flex justify-center items-center p-3 m-0 gap-4'
               >
-                <p>Test Drive</p>
+                <p>{t('testDriveBtn')}</p>
                 <IoCarOutline className='size-4 lg:size-6' />
               </Button>
             </DialogTrigger>
@@ -239,17 +248,24 @@ export default function VehicleDetails({ vehicle }: Props) {
             />
           </Dialog>
 
-          <Dialog>
+          <Dialog open={openGetCall} onOpenChange={setOpenGetCall}>
             <DialogTrigger asChild>
               <Button
                 // variant={'outline'}
                 className='bg-emerald-500 text-white hover:bg-emerald-600 h-fit text-base lg:text-lg 2xl:text-xl w-full font-medium flex justify-center items-center p-3 m-0 gap-4'
               >
-                <p>Get A Call</p>
+                <p>{t('getCallBtn')}</p>
                 <VscCallIncoming className='size-4 lg:size-6' />
               </Button>
             </DialogTrigger>
-            <GetACallForm />
+            <GetACallForm
+              id={vehicle?.documentId as string}
+              vehicle={`${
+                vehicle?.year
+              } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
+              open={openGetCall}
+              setOpen={setOpenGetCall}
+            />
           </Dialog>
         </div>
       </div>

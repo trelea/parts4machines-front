@@ -6,6 +6,7 @@ import { LuMessageSquarePlus } from 'react-icons/lu';
 import { Dialog } from './ui/dialog';
 import { DialogTrigger } from '@radix-ui/react-dialog';
 import OrderVehicle from './OrderVehicle';
+import { LiaHandPointerSolid } from 'react-icons/lia';
 import React from 'react';
 
 interface Props {
@@ -52,22 +53,30 @@ export default function VehicleProductCard({
               <h1>${price.toFixed(2)}</h1>
             </div>
 
-            <Dialog open={open} onOpenChange={setOpen}>
-              <DialogTrigger asChild>
-                <Button className='font-semibold text-sm lg:text-base 2xl:text-lg text-foreground hover:text-primary h-fit bg-background m-0 p-0 hover:bg-black shadow-2xl flex gap-4 px-10 py-2 w-full'>
-                  <p>{t('vehicle.order')}</p>
-                  <LuMessageSquarePlus className='size-6' />
+            <div className='flex gap-2 md:gap-4 xl:gap-2 2xl:flex-col-reverse 1900px:flex-row 1900px:gap-4 w-full'>
+              <Dialog open={open} onOpenChange={setOpen}>
+                <DialogTrigger asChild>
+                  <Button className='font-semibold text-sm xl:text-base text-foreground hover:text-primary h-fit bg-background m-0 p-0 hover:bg-black shadow-2xl flex gap-4 py-2 w-full'>
+                    <p>{t('vehicle.order')}</p>
+                    <LuMessageSquarePlus className='size-4 md:size-6' />
+                  </Button>
+                </DialogTrigger>
+                <OrderVehicle
+                  title={title.toUpperCase()}
+                  price={price}
+                  id={id}
+                  open={open}
+                  setOpen={setOpen}
+                  negotiate={false}
+                />
+              </Dialog>
+              <Link to={`/${i18n.language}${href}`} className='p-0 m-0'>
+                <Button className='font-semibold text-sm xl:text-base text-foreground hover:text-primary h-fit bg-background m-0 p-0 hover:bg-black shadow-2xl flex gap-2 px-4 py-2 w-full'>
+                  {t('more')}
+                  <LiaHandPointerSolid className='size-4 md:size-6' />
                 </Button>
-              </DialogTrigger>
-              <OrderVehicle
-                title={title.toUpperCase()}
-                price={price}
-                id={id}
-                open={open}
-                setOpen={setOpen}
-                negotiate={false}
-              />
-            </Dialog>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

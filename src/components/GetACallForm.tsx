@@ -1,4 +1,3 @@
-import { useForm } from 'react-hook-form';
 import { DialogContent, DialogHeader, DialogTitle } from './ui/dialog';
 import {
   Form,
@@ -14,10 +13,24 @@ import { useTranslation } from 'react-i18next';
 import { Button } from './ui/button';
 import { VscCallIncoming } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
+import { useAdditionalOrder } from '@/pages/Vehicles/hooks/useAdditionalOrders';
 
-export default function GetACallForm() {
+interface Props {
+  id: string;
+  vehicle: string;
+  setOpen: (_: boolean) => void;
+  open: boolean;
+}
+
+export default function GetACallForm({ id, vehicle, setOpen, open }: Props) {
+  const { form, onSubmit, isPending } = useAdditionalOrder({
+    id,
+    open,
+    setOpen,
+    method: 'GET_CALL',
+  });
   const { t, i18n } = useTranslation();
-  const form = useForm();
+
   return (
     <DialogContent className='max-w-[90%] xl:w-[50%] 2xl:w-[33%] rounded-lg lg:rounded-xl'>
       <DialogHeader>
@@ -28,7 +41,7 @@ export default function GetACallForm() {
       <Form {...form}>
         <form
           action=''
-          onSubmit={form.handleSubmit(() => {})}
+          onSubmit={form.handleSubmit(onSubmit)}
           className='flex flex-col gap-6'
         >
           <FormField
@@ -76,33 +89,40 @@ export default function GetACallForm() {
 
           <div className='flex flex-col font-normal text-white/50 text-sm md:text-base xl:text-lg gap-4 border border-white/5 shadow-2xl p-2 rounded-md'>
             <h1>
-              Submit
-              {/* <Link
+              {t('callForm')}
+              <Link
                 to={`/${i18n.language}/vehicles/${id}`}
                 className='hover:underline'
               >
                 <b>{vehicle}.</b>
-              </Link> */}
+              </Link>
             </h1>
 
             <h1>
-              Clike Here To View More{' '}
+              {t('_1')}
               <Link
                 to={`/${i18n.language}/vehicles`}
                 className='hover:underline'
               >
-                <b>Vehicles.</b>
+                <b>{t('_2')}</b>
               </Link>
             </h1>
           </div>
 
           <Button
+            disabled={isPending}
             type='submit'
             variant={'default'}
             className='bg-emerald-500 text-white hover:bg-emerald-600 w-full flex items-center gap-4 text-sm md:text-base xl:text-lg 2xl:text-xl font-semibold h-fit'
           >
-            Submit
-            <VscCallIncoming className='size-6' />
+            {isPending ? (
+              <>{t('proc')}</>
+            ) : (
+              <>
+                {t('submit')}
+                <VscCallIncoming className='size-6' />
+              </>
+            )}
           </Button>
         </form>
       </Form>

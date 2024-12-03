@@ -7,6 +7,8 @@ import Paginatinate from '@/components/Pagination';
 import CardsContainer from '@/components/CardsContainer';
 import { AutoPart } from './types/autoparts.types';
 import AutoPartProductCard from '@/components/AutoPartProductCard';
+import { filteringImage } from '@/lib/utils';
+import { Helmet } from 'react-helmet-async';
 
 export default function AutoParts() {
   useI18n();
@@ -17,6 +19,9 @@ export default function AutoParts() {
 
   return (
     <Loyout>
+      <Helmet>
+        <title>{`Elite Autos | Auto Parts`}</title>
+      </Helmet>
       <div className='px-8 md:px-11 lg:px-40 2xl:px-56 w-full min-h-dvh'>
         {/* Search */}
         <SearchBar setSearch={setSearch} search={search} />
@@ -28,7 +33,7 @@ export default function AutoParts() {
               autoPart.stock >= 1 && (
                 <AutoPartProductCard
                   key={autoPart.documentId}
-                  thumb={autoPart?.images[0]?.formats.large.url}
+                  thumb={filteringImage(autoPart?.images[0])?.url as string}
                   title={`${autoPart.name} - ${autoPart.oem} - ${
                     autoPart.cars.split(';')[0]
                   }`}

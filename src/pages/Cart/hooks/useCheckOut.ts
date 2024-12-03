@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 
 export const useCheckOut = () => {
   const { i18n } = useTranslation();
-  const mutation = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationKey: ['checkout'],
     mutationFn: async (data: CheckOutType) => await Checkout(data),
     onSuccess: (res: AxiosResponse<{ url: string }>) =>
@@ -36,8 +36,8 @@ export const useCheckOut = () => {
     }));
     let _p = parts.map(({ price, ...rest }) => ({ ...rest }));
 
-    mutation.mutate({ parts: _p, services: _s });
+    mutate({ parts: _p, services: _s });
   };
 
-  return { checkout };
+  return { checkout, isPending };
 };
