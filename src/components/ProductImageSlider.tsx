@@ -63,8 +63,16 @@ export default function ProductImageSlider({ images }: Props) {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className='absolute left-2' />
-          <CarouselNext className='absolute right-2' />
+          <CarouselPrevious
+            className='absolute left-2'
+            disabled={thumb === 0}
+            additionalOnClick={() => setThumb((_) => _ - 1)}
+          />
+          <CarouselNext
+            className='absolute right-2'
+            disabled={thumb === (images?.length as number) - 1}
+            additionalOnClick={() => setThumb((_) => _ + 1)}
+          />
         </Carousel>
       </div>
       <div className='lg:hidden w-full'>
@@ -86,8 +94,16 @@ export default function ProductImageSlider({ images }: Props) {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className='absolute left-2 top-[50%]' />
-          <CarouselNext className='absolute right-2 top-[50%]' />
+          <CarouselPrevious
+            disabled={thumb === 0}
+            className='absolute left-2 top-[50%]'
+            onClick={() => setThumb((_) => _ - 1)}
+          />
+          <CarouselNext
+            disabled={thumb === (images?.length as number) - 1}
+            className='absolute right-2 top-[50%]'
+            onClick={() => setThumb((_) => _ + 1)}
+          />
         </Carousel>
       </div>
     </>
