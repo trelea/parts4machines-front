@@ -1,0 +1,43 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+<url>
+<loc>https://eliteautos.shop</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://eliteautos.shop/en/" />
+<xhtml:link rel="alternate" hreflang="ru" href="https://eliteautos.shop/ru/" />
+<xhtml:link rel="alternate" hreflang="ua" href="https://eliteautos.shop/ua/" />
+<xhtml:link rel="alternate" hreflang="es" href="https://eliteautos.shop/es/" />
+</url>
+
+<url>
+<loc>https://eliteautos.shop/vehicles</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://eliteautos.shop/en/vehicles" />
+<xhtml:link rel="alternate" hreflang="ru" href="https://eliteautos.shop/ru/vehicles" />
+<xhtml:link rel="alternate" hreflang="ua" href="https://eliteautos.shop/ua/vehicles" />
+<xhtml:link rel="alternate" hreflang="es" href="https://eliteautos.shop/es/vehicles" />
+</url>
+
+<url>
+<loc>https://eliteautos.shop/autoparts</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://eliteautos.shop/en/autoparts" />
+<xhtml:link rel="alternate" hreflang="ru" href="https://eliteautos.shop/ru/autoparts" />
+<xhtml:link rel="alternate" hreflang="ua" href="https://eliteautos.shop/ua/autoparts" />
+<xhtml:link rel="alternate" hreflang="es" href="https://eliteautos.shop/es/autoparts" />
+</url>
+
+<url>
+<loc>https://eliteautos.shop/services</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://eliteautos.shop/en/services" />
+<xhtml:link rel="alternate" hreflang="ru" href="https://eliteautos.shop/ru/services" />
+<xhtml:link rel="alternate" hreflang="ua" href="https://eliteautos.shop/ua/services" />
+<xhtml:link rel="alternate" hreflang="es" href="https://eliteautos.shop/es/services" />
+</url>
+
+<url>
+<loc>https://eliteautos.shop/cart</loc>
+<xhtml:link rel="alternate" hreflang="en" href="https://eliteautos.shop/en/cart" />
+<xhtml:link rel="alternate" hreflang="ru" href="https://eliteautos.shop/ru/cart" />
+<xhtml:link rel="alternate" hreflang="ua" href="https://eliteautos.shop/ua/cart" />
+<xhtml:link rel="alternate" hreflang="es" href="https://eliteautos.shop/es/cart" />
+</url>
+
+</urlset>
