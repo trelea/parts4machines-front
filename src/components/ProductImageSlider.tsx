@@ -24,6 +24,7 @@ interface Props {
 
 export default function ProductImageSlider({ images }: Props) {
   const [thumb, setThumb] = React.useState<number>(0);
+
   return (
     <>
       <div className='hidden lg:flex-1 lg:flex flex-col gap-6'>
@@ -84,10 +85,10 @@ export default function ProductImageSlider({ images }: Props) {
                   <Image
                     className='w-full object-contain object-center rounded-lg shadow-2xl h-64 sm:h-80 md:h-96 border border-white border-opacity-10'
                     src={`${import.meta.env.VITE_API_URL}${
-                      i && filteringImage(images[thumb])?.url
+                      i && filteringImage(i)?.url
                     }`}
                     alt={`${import.meta.env.VITE_API_URL}${
-                      i && filteringImage(images[thumb])?.name
+                      i && filteringImage(i)?.name
                     }`}
                   />
                 </div>
@@ -95,14 +96,14 @@ export default function ProductImageSlider({ images }: Props) {
             ))}
           </CarouselContent>
           <CarouselPrevious
-            disabled={thumb === 0}
+            // disabled={thumb === 0}
             className='absolute left-2 top-[50%]'
-            onClick={() => setThumb((_) => _ - 1)}
+            // onClick={() => setThumb((_) => _ - 1)}
           />
           <CarouselNext
-            disabled={thumb === (images?.length as number) - 1}
+            // disabled={thumb === (images?.length as number) - 1}
             className='absolute right-2 top-[50%]'
-            onClick={() => setThumb((_) => _ + 1)}
+            // onClick={() => setThumb((_) => _ + 1)}
           />
         </Carousel>
       </div>

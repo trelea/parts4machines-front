@@ -31,7 +31,7 @@ export default function AutoPartInCart({ part, quantity }: Props) {
           className='w-full md:w-96 h-full'
         >
           <Image
-            src={`${import.meta.env.VITE_API_URL}/${
+            src={`${import.meta.env.VITE_API_URL}${
               filteringImage(part.images[0])?.url
             }`}
             className='object-center object-cover rounded-xl h-full w-full md:w-96'

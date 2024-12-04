@@ -30,10 +30,10 @@ export default function ServiceInCart({ service, quantity }: Props) {
           className='w-full md:w-96 h-full'
         >
           <Image
-            src={`${import.meta.env.VITE_API_URL}/${
+            src={`${import.meta.env.VITE_API_URL}${
               filteringImage(service.image)?.url
             }`}
-            alt={`${import.meta.env.VITE_API_URL}/${
+            alt={`${import.meta.env.VITE_API_URL}${
               filteringImage(service.image)?.name
             }`}
             className='object-center object-cover rounded-xl h-full w-full md:w-96'
