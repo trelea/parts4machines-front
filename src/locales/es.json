@@ -8,7 +8,7 @@
 
     "about": {
       "title": "Sobre Nosotros",
-      "desc": "Nuestra empresa, Elite Autos, vende repuestos para BMW y Subaru, pero también tenemos una sección 'Varios' donde puedes encontrar productos de otras marcas de automóviles. Estamos ubicados en dos estados: Massachusetts y Carolina del Sur. Contamos con direcciones donde puedes venir en persona para ver los artículos que deseas comprar. Además, ofrecemos servicios de detallado de automóviles, actualmente solo disponibles en Massachusetts."
+      "desc": "Nos especializamos en la venta de autos en 2 estados de EE. UU. como Massachusetts y Carolina del Sur, ofrecemos una amplia gama de autos de alta calidad a precios competitivos. Nuestra misión es brindar a cada cliente la oportunidad de encontrar el automóvil perfecto que se adapte a sus necesidades y estilo de vida. Estamos comprometidos con la calidad, la integridad y el excelente servicio. Vemos a cada cliente como un socio y hacemos todo lo posible para superar sus expectativas."
     },
 
     "footer": {
@@ -40,7 +40,7 @@
       "name": "Nombre",
       "oem": "OEM",
       "cars": "Coches",
-      "stock": "En stock",
+      "stock": "Stock",
       "status": "Estado",
       "desc": "Descripción",
       "tags": "Etiquetas"
@@ -91,11 +91,12 @@
     },
 
     "productInCart": {
-      "part": "Repuesto de auto:",
-      "service": "Servicio:",
-      "price": "Precio:",
+      "part": "Repuesto de auto",
+      "service": "Servicio",
+      "price": "Precio",
       "quantity": "Cantidad",
-      "total": "Total"
+      "total": "Total",
+      "stock": "Stock"
     },
 
     "checkOut": {
@@ -123,8 +124,8 @@
     "proc": "Procesando",
     "drive": "Conducirlo",
     "submit": "Enviar",
-    "testDriveBtn": "Prueba de Conducción",
-    "getCallBtn": "Recibir una llamada",
+    "testDriveBtn": "Conducir",
+    "getCallBtn": "Llamar",
     "invalidContact": "Número de teléfono inválido",
     "__desc__1": "Gracias por tu cooperación, nos pondremos en contacto contigo en breve.",
     "__desc__2": "Pedido enviado con éxito.",

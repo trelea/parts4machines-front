@@ -8,7 +8,7 @@
 
     "about": {
       "title": "About Us",
-      "desc": "Our company Elite Autos sell parts for BMW and Subaru, but we also have a 'Miscellaneous' section where you can find various products from other car brands. We are located in two states: Massachusetts and South Carolina. Our addresses where you can come in person to see the items you want to purchase. Additionally, we offer car detailing services, currently only in Massachusetts."
+      "desc": "We specialize in selling cars in 2 US states Massachusetts and South Carolina, we offer a wide range of high-quality cars at competitive prices. Our mission is to provide each customer with the opportunity to find the perfect car that suits their needs and lifestyle. We strive for quality, honesty and excellent service. We consider each client as a partner and do everything possible to exceed their expectations."
     },
 
     "footer": {
@@ -40,7 +40,7 @@
       "name": "Name",
       "oem": "OEM",
       "cars": "Cars",
-      "stock": "In Stock",
+      "stock": "Stock",
       "status": "Status",
       "desc": "Description",
       "tags": "Tags"
@@ -92,11 +92,12 @@
     },
 
     "productInCart": {
-      "part": "Auto Part:",
-      "service": "Service:",
-      "price": "Price:",
+      "part": "Auto Part",
+      "service": "Service",
+      "price": "Price",
       "quantity": "Quantity",
-      "total": "Total"
+      "total": "Total",
+      "stock": "Stock"
     },
 
     "checkOut": {
@@ -124,8 +125,8 @@
     "proc": "Processing",
     "drive": "Drive It",
     "submit": "Submit",
-    "testDriveBtn": "Test Drive",
-    "getCallBtn": "Get A Call",
+    "testDriveBtn": "Drive",
+    "getCallBtn": "Call",
     "invalidContact": "Invalid phone number",
     "__desc__1": "Thank you for your cooperation, we will contact you shortly.",
     "__desc__2": "Order Successfully Submited.",

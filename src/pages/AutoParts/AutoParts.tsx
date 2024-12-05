@@ -16,7 +16,7 @@ export default function AutoParts() {
     useGetAutoParts();
 
   if (error || isError) return <ErrorFetchDialog />;
-
+  console.log(autoParts);
   return (
     <Loyout>
       <Helmet>
@@ -41,6 +41,7 @@ export default function AutoParts() {
                   href={`/autoparts/${autoPart.documentId}`}
                   documentId={autoPart.documentId}
                   name={autoPart.name}
+                  stock={autoPart.stock}
                 />
               )
           )}

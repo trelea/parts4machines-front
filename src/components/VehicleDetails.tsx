@@ -177,97 +177,91 @@ export default function VehicleDetails({ vehicle }: Props) {
         </ScrollArea>
       </div>
 
-      <div className='flex flex-col gap-4 mb-10 xl:mb-0'>
-        <div className='flex justify-between gap-10 items-center'>
-          <Dialog open={open} onOpenChange={setOpen}>
-            <DialogTrigger asChild>
-              <Button
-                variant={'default'}
-                className='h-fit text-base lg:text-lg 2xl:text-xl w-full font-medium flex justify-center items-center p-3 m-0 gap-4'
-              >
-                <p>{t('vehicle.order')}</p>
-                <LuMessageSquarePlus className='size-4 lg:size-6' />
-              </Button>
-            </DialogTrigger>
-            <OrderVehicle
-              open={open}
-              setOpen={setOpen}
-              id={vehicle?.documentId as string}
-              title={`${
-                vehicle?.year
-              } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
-              price={Number(vehicle?.price)}
-              negotiate={false}
-            />
-          </Dialog>
-
-          <h1 className='text-xl lg:text-2xl 2xl:text-3xl font-semibold'>
+      <div className='grid grid-cols-3 gap-4 mb-10 xl:mb-0 items-center'>
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogTrigger asChild className='col-span-2'>
+            <Button
+              variant={'default'}
+              className='h-fit text-base  2xl:text-lg w-full font-medium flex justify-center items-center py-3 m-0 gap-2'
+            >
+              <p>{t('vehicle.order')}</p>
+              <LuMessageSquarePlus className='size-4 lg:size-6' />
+            </Button>
+          </DialogTrigger>
+          <OrderVehicle
+            open={open}
+            setOpen={setOpen}
+            id={vehicle?.documentId as string}
+            title={`${
+              vehicle?.year
+            } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
+            price={Number(vehicle?.price)}
+            negotiate={false}
+          />
+        </Dialog>
+        <div className='w-full flex justify-center items-center'>
+          <h1 className='text-xl lg:text-2xl 2xl:text-3xl font-semibold text-ceter'>
             ${vehicle?.price.toFixed(2)}
           </h1>
         </div>
 
-        <div className='flex flex-col lg:flex-row gap-4'>
-          <Dialog open={openNegotiate} onOpenChange={setOpenNegotiate}>
-            <DialogTrigger asChild>
-              <Button
-                // variant={'outline'}
-                className='h-fit text-base lg:text-lg 2xl:text-xl w-full font-medium flex justify-center items-center p-3 m-0 gap-4'
-              >
-                <p>{t('vehicle.negotiate')}</p>
-                <GiReceiveMoney className='size-4 lg:size-6' />
-              </Button>
-            </DialogTrigger>
-            <OrderVehicle
-              open={openNegotiate}
-              setOpen={setOpenNegotiate}
-              id={vehicle?.documentId as string}
-              title={`${
-                vehicle?.year
-              } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
-              price={Number(vehicle?.price)}
-              negotiate={true}
-            />
-          </Dialog>
-          <Dialog open={openTestDrive} onOpenChange={setOpenTestDrive}>
-            <DialogTrigger asChild>
-              <Button
-                // variant={'outline'}
-                className='bg-emerald-500 text-white hover:bg-emerald-600 h-fit text-base lg:text-lg 2xl:text-xl w-full font-medium flex justify-center items-center p-3 m-0 gap-4'
-              >
-                <p>{t('testDriveBtn')}</p>
-                <IoCarOutline className='size-4 lg:size-6' />
-              </Button>
-            </DialogTrigger>
-            <TestDriveForm
-              id={vehicle?.documentId as string}
-              vehicle={`${
-                vehicle?.year
-              } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
-              open={openTestDrive}
-              setOpen={setOpenTestDrive}
-            />
-          </Dialog>
+        <Dialog open={openNegotiate} onOpenChange={setOpenNegotiate}>
+          <DialogTrigger asChild>
+            <Button className='h-fit text-base  2xl:text-lg w-full font-medium flex justify-center items-center py-3 m-0 gap-2'>
+              <p>{t('vehicle.negotiate')}</p>
+              <GiReceiveMoney className='size-4 lg:size-6' />
+            </Button>
+          </DialogTrigger>
+          <OrderVehicle
+            open={openNegotiate}
+            setOpen={setOpenNegotiate}
+            id={vehicle?.documentId as string}
+            title={`${
+              vehicle?.year
+            } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
+            price={Number(vehicle?.price)}
+            negotiate={true}
+          />
+        </Dialog>
+        <Dialog open={openTestDrive} onOpenChange={setOpenTestDrive}>
+          <DialogTrigger asChild>
+            <Button
+              // variant={'outline'}
+              className='bg-emerald-500 text-white hover:bg-emerald-600 h-fit text-base 2xl:text-lg w-full font-medium flex justify-center items-center py-3 m-0 gap-4'
+            >
+              <p>{t('testDriveBtn')}</p>
+              <IoCarOutline className='size-4 lg:size-6' />
+            </Button>
+          </DialogTrigger>
+          <TestDriveForm
+            id={vehicle?.documentId as string}
+            vehicle={`${
+              vehicle?.year
+            } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
+            open={openTestDrive}
+            setOpen={setOpenTestDrive}
+          />
+        </Dialog>
 
-          <Dialog open={openGetCall} onOpenChange={setOpenGetCall}>
-            <DialogTrigger asChild>
-              <Button
-                // variant={'outline'}
-                className='bg-emerald-500 text-white hover:bg-emerald-600 h-fit text-base lg:text-lg 2xl:text-xl w-full font-medium flex justify-center items-center p-3 m-0 gap-4'
-              >
-                <p>{t('getCallBtn')}</p>
-                <VscCallIncoming className='size-4 lg:size-6' />
-              </Button>
-            </DialogTrigger>
-            <GetACallForm
-              id={vehicle?.documentId as string}
-              vehicle={`${
-                vehicle?.year
-              } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
-              open={openGetCall}
-              setOpen={setOpenGetCall}
-            />
-          </Dialog>
-        </div>
+        <Dialog open={openGetCall} onOpenChange={setOpenGetCall}>
+          <DialogTrigger asChild>
+            <Button
+              // variant={'outline'}
+              className='bg-emerald-500 text-white hover:bg-emerald-600 h-fit text-base 2xl:text-lg w-full font-medium flex justify-center items-center py-3 m-0 gap-4'
+            >
+              <p>{t('getCallBtn')}</p>
+              <VscCallIncoming className='size-4 lg:size-6' />
+            </Button>
+          </DialogTrigger>
+          <GetACallForm
+            id={vehicle?.documentId as string}
+            vehicle={`${
+              vehicle?.year
+            } ${vehicle?.mark.toUpperCase()} ${vehicle?.model.toUpperCase()}`}
+            open={openGetCall}
+            setOpen={setOpenGetCall}
+          />
+        </Dialog>
       </div>
     </div>
   );

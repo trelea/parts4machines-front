@@ -18,6 +18,7 @@ interface Props {
   href: string;
   documentId: string;
   name: string;
+  stock: number;
 }
 
 export default function AutoPartProductCard({
@@ -27,6 +28,7 @@ export default function AutoPartProductCard({
   href,
   documentId,
   name,
+  stock,
 }: Props) {
   const { i18n, t } = useTranslation();
   const { isPartInCart } = useCheckProductsInCart();
@@ -44,18 +46,26 @@ export default function AutoPartProductCard({
         />
       </Link>
 
-      <div className='flex flex-col justify-between md:flex-1 p-4   min-h-40'>
+      <div className='flex flex-col justify-between md:flex-1 p-4 min-h-48'>
         <Link to={`/${i18n.language}${href}`} className='max-h-fit'>
-          <h1 className='font-normal text-base lg:text-lg 2xl:text-xl text-black'>
+          <h1 className='font-medium text-base lg:text-lg 2xl:text-xl text-black'>
             {title.toUpperCase()}
           </h1>
         </Link>
 
         <div className='flex items-end w-full'>
-          <div className='flex flex-col justify-between w-full h-full'>
-            <div className='font-semibold text-base xl:text-lg text-black flex justify-between'>
-              <h1>{t('price')}:</h1>
-              <h1>${price.toFixed(2)}</h1>
+          <div className='flex flex-col justify-between w-full h-full gap-1'>
+            <div className='font-normal text-base text-black/75 flex justify-between'>
+              <h1>{t('partTable.stock')}</h1>
+              <h1>
+                <strong>{stock} pcs</strong>
+              </h1>
+            </div>
+            <div className='font-normal text-base text-black/75 flex justify-between'>
+              <h1>{t('price')}</h1>
+              <h1>
+                <strong>${price.toFixed(2)}</strong>
+              </h1>
             </div>
 
             {isPartInCart({ documentId }) ? (

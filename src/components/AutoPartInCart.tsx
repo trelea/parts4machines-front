@@ -60,6 +60,17 @@ export default function AutoPartInCart({ part, quantity }: Props) {
             </p>
           </div>
         </li>
+        {/* Stock Update */}
+        <li className='flex flex-row justify-between'>
+          <h1 className='font-normal text-base md:text-lg xl:text-xl'>
+            {t('productInCart.stock')}
+          </h1>
+          <div className='flex justify-end items-center flex-grow'>
+            <p className='font-medium text-base md:text-lg xl:text-xl'>
+              {part.stock} pcs
+            </p>
+          </div>
+        </li>
         <li className='flex flex-row justify-between'>
           <h1 className='font-normal text-base md:text-lg xl:text-xl'>
             {t('productInCart.quantity')}

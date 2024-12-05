@@ -69,7 +69,7 @@ export default function Navbar() {
       <ul className='flex gap-6 2xl:gap-10 items-center justify-center relative'>
         <li className='fixed mr-[272px] z-50 xl:mr-32 border border-[#E6CCB2]/80 rounded-full aspect-square flex justify-center items-center bg-background/50 backdrop-blur-xl'>
           <Select onValueChange={(e) => setLang(e)}>
-            <SelectTrigger className='w-fit border-none outline-none focus-visible:outline-none focus:outline-none ring-0 focus:ring-0 focus-visible:ring-0 text-xl font-medium  bg-transparent rounded-full focus:border-none aspect-square flex justify-center items-center'>
+            <SelectTrigger className='w-fit border-none outline-none focus-visible:outline-none focus:outline-none ring-0 focus:ring-0 focus-visible:ring-0 text-xl font-medium bg-transparent rounded-full focus:border-none aspect-square flex justify-center items-center size-6 p-6'>
               <SelectValue placeholder={i18n.language} />
             </SelectTrigger>
             <SelectContent className=''>

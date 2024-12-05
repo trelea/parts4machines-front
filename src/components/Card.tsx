@@ -37,7 +37,7 @@ export default function Card({
           to={href}
           className='absolute bottom-0 right-0 w-1/2 p-2 500px:p-4 sm:hidden hover:animate-bounce'
         >
-          <Button className='w-full bg-[#da6e00] py-6 400px:py-7 450px:py-8 rounded-2xl text-foreground shadow-2xl shadow-black/50 text-xs 500px:text-sm hover:animate-bounce hover:bg-[#da6e00]'>
+          <Button className='w-full bg-[#da6e00] py-6 400px:py-7 450px:py-8 rounded-2xl text-foreground shadow-md shadow-black/25 text-xs 500px:text-sm hover:animate-bounce hover:bg-[#da6e00]'>
             {t && t('bestdeals')}
           </Button>
         </Link>
