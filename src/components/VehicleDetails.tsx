@@ -199,14 +199,14 @@ export default function VehicleDetails({ vehicle }: Props) {
             negotiate={false}
           />
         </Dialog>
-        <div className='w-full flex justify-center items-center'>
-          <h1 className='text-xl lg:text-2xl 2xl:text-3xl font-semibold text-ceter'>
+        <div className='w-full flex justify-center items-center bg-primary h-full rounded-md text-background'>
+          <h1 className='text-base md:text-lg lg:text-xl 2xl:text-2xl font-semibold text-ceter'>
             ${vehicle?.price.toFixed(2)}
           </h1>
         </div>
 
         <Dialog open={openNegotiate} onOpenChange={setOpenNegotiate}>
-          <DialogTrigger asChild>
+          <DialogTrigger asChild className='col-span-3 md:col-span-1'>
             <Button className='h-fit text-base  2xl:text-lg w-full font-medium flex justify-center items-center py-3 m-0 gap-2'>
               <p>{t('vehicle.negotiate')}</p>
               <GiReceiveMoney className='size-4 lg:size-6' />
@@ -224,7 +224,7 @@ export default function VehicleDetails({ vehicle }: Props) {
           />
         </Dialog>
         <Dialog open={openTestDrive} onOpenChange={setOpenTestDrive}>
-          <DialogTrigger asChild>
+          <DialogTrigger asChild className='col-span-3 md:col-span-1'>
             <Button
               // variant={'outline'}
               className='bg-emerald-500 text-white hover:bg-emerald-600 h-fit text-base 2xl:text-lg w-full font-medium flex justify-center items-center py-3 m-0 gap-4'
@@ -244,11 +244,8 @@ export default function VehicleDetails({ vehicle }: Props) {
         </Dialog>
 
         <Dialog open={openGetCall} onOpenChange={setOpenGetCall}>
-          <DialogTrigger asChild>
-            <Button
-              // variant={'outline'}
-              className='bg-emerald-500 text-white hover:bg-emerald-600 h-fit text-base 2xl:text-lg w-full font-medium flex justify-center items-center py-3 m-0 gap-4'
-            >
+          <DialogTrigger asChild className='col-span-3 md:col-span-1'>
+            <Button className='bg-emerald-500 text-white hover:bg-emerald-600 h-fit text-base 2xl:text-lg w-full font-medium flex justify-center items-center py-3 m-0 gap-4'>
               <p>{t('getCallBtn')}</p>
               <VscCallIncoming className='size-4 lg:size-6' />
             </Button>
