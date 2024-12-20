@@ -16,7 +16,7 @@ export default function AutoParts() {
     useGetAutoParts();
 
   if (error || isError) return <ErrorFetchDialog />;
-  console.log(autoParts);
+
   return (
     <Loyout>
       <Helmet>
